@@ -3,8 +3,11 @@
 <html ng-app="Realtime">
 <head>
 <title>Home</title>
-<link href="<c:url value="/resources/js/twitter-bootstrap/css/bootstrap.min.css" />" rel="stylesheet" />
-<link href="<c:url value="/resources/js/tether/css/tether.css" />" rel="stylesheet" />
+<link
+	href="<c:url value="/resources/js/twitter-bootstrap/css/bootstrap.min.css" />"
+	rel="stylesheet" />
+<link href="<c:url value="/resources/js/tether/css/tether.css" />"
+	rel="stylesheet" />
 <link
 	href="<c:url value="/resources/js/tether/css/tether-theme-basic.css" />"
 	rel="stylesheet" />
@@ -18,6 +21,7 @@
 	href="<c:url value="/resources/js/twitter-bootstrap/css/bootstrap-theme.min.css" />"
 	rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="<c:url value="/resources/js/chartjs/Chart.min.js" />"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="<c:url value="/resources/js/angularjs/angular.min.js" />"></script>
 <script
@@ -31,6 +35,8 @@
 	src="<c:url value="/resources/js/angular-tooltip/angular-tooltip.js" />"></script>
 <script
 	src="<c:url value="/resources/js/n3-charts/line-chart.min.js" />"></script>
+<script
+	src="<c:url value="/resources/js/tc-angular-chartjs/tc-angular-chartjs.min.js" />"></script>
 <style>
 .circle {
 	border-radius: 50%;
@@ -80,10 +86,24 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-			  <canvas class="gauge" id="demanda" canvasid="demanda" value="demanda" max="40" min="0" unit="kWhr" title="Demanda Eléctrica">
+				<canvas class="gauge" id="demanda" canvasid="demanda"
+					value="demanda" max="40" min="0" unit="kWhr"
+					title="Demanda Eléctrica">
                 </canvas>
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-3">
+				<h2>Distribución de demandas</h2>
+<!-- 				<table class="table table-condensed"> -->
+<!-- 					<tbody> -->
+<!-- 						<tr ng-repeat="d in demandas"> -->
+<!-- 							<td>{{d.nombreequipo}}</td> -->
+<!-- 							<td>{{d.tagvalue}}</td> -->
+<!-- 						</tr> -->
+<!-- 					</tbody> -->
+<!-- 				</table> -->
+				<canvas tc-chartjs-doughnut chart-options="optionsDemandas"
+					chart-data="demandas" auto-legend></canvas>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">

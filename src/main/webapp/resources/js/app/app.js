@@ -1,5 +1,5 @@
 var app = angular.module("Realtime",
-		[ "ngResource", "ngRoute", 'n3-line-chart' ]);
+		[ "ngResource", "ngRoute", 'n3-line-chart','tc.chartjs']);
 // app.directive(
 // 'myTooltip',
 // function($tooltip) {
@@ -90,12 +90,45 @@ app
 					$scope.Clientes = RTServices.Clientes.query();
 					$scope.Equipos = [];
 					$scope.consumos = [];
+					$scope.demandas = [];
 					$scope.demanda = 0;
-					$scope.getSitio = function(idsitio) {					
-						return $filter("filter")($scope.Sitios,function(item){
+					$scope.getSitio = function(idsitio) {
+						return $filter("filter")($scope.Sitios, function(item) {
 							return item.idsitio === idsitio;
-						} , true)[0];
+						}, true)[0];
 					};
+					$scope.colors = [{color:"#F7464A",highlight:"#FF5A5E"},
+					                 {color:"#46BFBD",highlight:"#5AD3D1"},
+					                 {color:"#FDB45C",highlight:"#FFC870"},
+					                 {color:"#949FB1",highlight:"#A8B3C5"},
+					                 {color:"#4D5360",highlight:"#616774"}];
+
+					$scope.optionsDemandas = {
+						// Sets the chart to be responsive
+						responsive : true,
+						// Boolean - Whether we should show a stroke on each
+						// segment
+						segmentShowStroke : true,
+						// String - The colour of each segment stroke
+						segmentStrokeColor : '#fff',
+						// Number - The width of each segment stroke
+						segmentStrokeWidth : 2,
+						// Number - The percentage of the chart that we cut out
+						// of the middle
+						percentageInnerCutout : 50, // This is 0 for Pie charts
+						// Number - Amount of animation steps
+						animationSteps : 100,
+						// String - Animation easing effect
+						animationEasing : 'easeOutBounce',
+						// Boolean - Whether we animate the rotation of the
+						// Doughnut
+						animateRotate : true,
+						// Boolean - Whether we animate scaling the Doughnut
+						// from the centre
+						animateScale : false,
+						legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+					};
+
 					$scope.options = {
 						series : [ {
 							y : "consumo",
@@ -148,14 +181,19 @@ app
 							return 'red';
 						return 'purple';
 					};
-					$scope.$watch("form.idsitio",
-						function(newValue) {
-							if (!newValue)
+					$scope
+							.$watch(
+									"form.idsitio",
+									function(newValue) {
+										if (!newValue)
 											return;
 										$scope.Equipos = [];
 										var sitio = $scope.getSitio(newValue);
-										console.log(sitio);
-										RTServices.Sitios.ConsumoSitio({sitio : sitio.nombresitio},
+										RTServices.Sitios
+												.ConsumoSitio(
+														{
+															sitio : sitio.nombresitio
+														},
 														function(response) {
 															$scope.ConsumoSitio = response.consumo;
 														});
@@ -176,23 +214,28 @@ app
 																	function(
 																			data) {
 																		if ($scope.Equipos.length > 0) {
+																			$scope.demandas = [];
 																			for (var i = 0; i < data.length; i++) {
-																				if (!$scope.Equipos[i].lastMinute)
-																					$scope.Equipos[i].lastMinute = [];
+//																				if (!$scope.Equipos[i].lastMinute)
+//																					$scope.Equipos[i].lastMinute = [];
 																				$scope.Equipos[i].diff = $scope.Equipos[i].tagvalue
 																						- data[i].tagvalue;
 																				$scope.Equipos[i].tagvalue = data[i].tagvalue;
-																				if (data[i].variable === 'DEMANDA'
-																						&& data[i].nombreequipo === 'ACOMETIDA')
-																					$scope.demanda = data[i].tagvalue;
-																				// $scope.Equipos[i].lastMinute
-																				// .push({
-																				// tagvalue
-																				// :
-																				// data[i].tagvalue,
-																				// x :
-																				// $scope.Equipos[i].lastMinute.length
-																				// });
+																				if (data[i].variable === 'DEMANDA') {
+																					if (data[i].nombreequipo === 'ACOMETIDA')
+																						$scope.demanda = data[i].tagvalue;
+																					else
+																						$scope.demandas
+																								.push({
+																									nombreequipo : data[i].nombreequipo,
+																									tagvalue : data[i].tagvalue,
+																									value :data[i].tagvalue,
+																									label: data[i].nombreequipo,
+																									color: $scope.colors[$scope.demandas.length].color,
+																									highlight: $scope.colors[$scope.demandas.length].highlight
+																								});
+
+																				}
 																			}
 																		} else {
 																			$scope.Equipos = data;
