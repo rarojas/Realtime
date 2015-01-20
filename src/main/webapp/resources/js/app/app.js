@@ -1,5 +1,5 @@
-var app = angular.module("Realtime",
-		[ "ngResource", "ngRoute", 'n3-line-chart','tc.chartjs']);
+var app = angular.module("Realtime",["ngResource", "ngRoute", 'n3-line-chart','tc.chartjs','angular-loading-bar']);
+
 // app.directive(
 // 'myTooltip',
 // function($tooltip) {
@@ -87,6 +87,31 @@ app
 		.controller(
 				"MainCtrl",
 				function($scope, RTServices, $interval, $filter) {
+					
+					$scope.mostrar = false;
+					
+					$scope.ExpandCollapse = function(){
+						//alert("$scope.mostrar" + $scope.mostrar);
+						if($scope.mostrar){
+							$scope.mostrar = false;
+						}else{
+							$scope.mostrar = true;
+						}
+						
+					};
+					
+					$scope.validarImagen = function(key){
+						//alert("key: " + key);
+						var descripcion = key;
+						if(descripcion.contains('AIRE')){
+							alert("Continene aire");
+							return false;
+						}else {
+							return true;
+						}
+					};
+					
+					
 					$scope.Clientes = RTServices.Clientes.query();
 					$scope.Equipos = [];
 					$scope.consumos = [];
@@ -134,7 +159,7 @@ app
 							y : "consumo",
 							label : "Consumos",
 							color : "#ff0000",
-							type : "line",
+							type : "column",
 							thickness : "1px"
 						} ],
 						axes : {
@@ -375,6 +400,7 @@ app.directive('gauge', function() {
 				}, stepDelay);
 				$scope.draw();
 			});
+			$scope.lastRefresh = new Date();
 		}
 	};
 });

@@ -4,6 +4,10 @@
 <head>
 <title>Home</title>
 <link
+	href="<c:url value="/resources/css/estilos.css" />"
+	rel="stylesheet" />
+
+<link
 	href="<c:url value="/resources/js/twitter-bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
 <link href="<c:url value="/resources/js/tether/css/tether.css" />"
@@ -20,10 +24,12 @@
 <link
 	href="<c:url value="/resources/js/twitter-bootstrap/css/bootstrap-theme.min.css" />"
 	rel="stylesheet" />
+<link href="<c:url value="/resources/js/angular-loading-bar/loading-bar.css" />" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="<c:url value="/resources/js/chartjs/Chart.min.js" />"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="<c:url value="/resources/js/angularjs/angular.min.js" />"></script>
+<script src="<c:url value="/resources/js/angular-loading-bar/loading-bar.min.js" />"></script>
 <script
 	src="<c:url value="/resources/js/angularjs/angular-resource.min.js" />"></script>
 <script
@@ -38,6 +44,17 @@
 <script
 	src="<c:url value="/resources/js/tc-angular-chartjs/tc-angular-chartjs.min.js" />"></script>
 <style>
+.tc-chart-js-legend li span {
+	width: 25px;
+	height: 25px;
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+.tc-chart-js-legend {
+	list-style-type: none;
+	padding-left: 0px;
+}
 .circle {
 	border-radius: 50%;
 	width: 10px;
@@ -47,92 +64,350 @@
 </style>
 </head>
 <body ng-controller="MainCtrl">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<form class="form-horizontal">
-					<fieldset>
-						<legend>Tablero en Tiempo Real</legend>
-						<div class="form-group">
-							<label class="col-md-4 control-label">Cliente</label>
-							<div class="col-md-8">
+	<table  border="0" style="width: 100%; background-color: #445465;">
+		<tr style="width: 100%;">
+			<td width="400px" align="center">
+				<img alt=""  width="200px;" src="resources/img/logos/LogoSelmec.jpg"></td>
+			<td width="500px" align="center">
+				<div>
+					<table border="0" style="width: 80%; background-color: #445465;">
+						<tr>
+							<td height="10px">
+							</td>
+						</tr>
+						<tr style="100%">
+							<td align="center" height="10px">
+								<span><font color="#FFFFFF" size="5">LOS MOCHIS</font></span>
+								<span ><font color="#69BE28" size="5"> | </font></span>
+								<span><font color="#69BE28" size="5">CENTRAL</font></span>
+							</td>
+						</tr>
+						<tr>
+							<td height="10px" align="center">
+								<!-- <iframe src="http://free.timeanddate.com/clock/i4ieo7my/n155/tlmx4/fs12/tcff9/pc9f0/tt0/th1/tb1" frameborder="0" width="245" height="16"></iframe> -->
+								<iframe src="http://free.timeanddate.com/clock/i4ieqff1/n155/tlmx4/fs12/tt0/th1" frameborder="0" width="245" height="16"></iframe>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td>
+			</td>
+			<td width="" align="right">
+				<img alt="" src="resources/img/logos/Telcel.png">
+			</td>
+			<td width="15px;">
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table class="tabla" border="0" style="width: 100%">
+		<tr style="width: 100%;">
+			<td align="center" colspan="4" style="border-top: solid #FFFFFF; border-bottom: solid #FFFFFF;">
+				<div style="width: 97%;" align="left">
+					<span class="titulo-tabla">Datos Generales  </span>
+					<img ng-show="mostrar === false" style="cursor:hand;vertical-align:middle; margin-right:2px" src="resources/img/icons/mas1.gif" ng-click="ExpandCollapse()">
+					<img ng-show="mostrar === true" style="cursor:hand;vertical-align:middle; margin-right:2px" src="resources/img/icons/menos1.gif" ng-click="ExpandCollapse()">
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" height="8px">
+			</td>
+		</tr>
+	</table>
+	<table ng-show="mostrar === true" class="tabla" border="0" style="width: 100%;">
+		<tr>
+			<td width="400px" align="center">
+				<table class="tabla" border="0" style="width: 350px;">
+					<tr style="width: 100%">
+						<td class="campo-tabla">
+							Cliente:
+						</td>
+						<td class="campo-tabla-propiedad" style="width: 80%">
+							TELCEL
+						</td>
+					</tr>
+					<tr>
+						<td class="campo-tabla">
+							Regi&oacute;n:
+						</td>
+						<td class="campo-tabla-propiedad">
+							REGION 2
+						</td>
+					</tr>
+					<tr>
+						<td class="campo-tabla">
+							Sitio:
+						</td>
+						<td class="campo-tabla-propiedad">
+							LOS MOCHIS
+						</td>
+					</tr>
+					<tr>
+						<td class="campo-tabla">
+							IP:
+						</td>
+						<td class="campo-tabla-propiedad">
+							10.51.0.65
+						</td>
+					</tr>
+				</table>
+			<td width="500px" align="center">
+				<div>
+					<table class="tabla" border="0" style="width: 90%;">
+						<tr>
+							<td style="width: 100px" class="campo-tabla">
+								Responsable:
+							</td>
+							<td class="campo-tabla-propiedad">
+								EDGAR CADENAS
+							</td>
+						</tr>
+						<tr>
+							<td class="campo-tabla">
+								Telefono:
+							</td>
+							<td class="campo-tabla-propiedad">
+								00-0000-0000
+							</td>
+						</tr>
+						<tr>
+							<td class="campo-tabla">
+								Puesto:
+							</td>
+							<td class="campo-tabla-propiedad">
+								SUPERVISOR
+							</td>
+						</tr>
+						<tr>
+							<td class="campo-tabla">
+								Correo:
+							</td>
+							<td class="campo-tabla-propiedad">
+								edgar.cardenas@mail.telcel.com
+							</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td width="80px">
+			</td>
+			<td width="" align="center">
+				<table class="tabla">
+					<tr height="37px">
+						<td align="center" style="width: 80px;">
+							<img alt="" src="resources/img/icons/00-ICONOS-FINALES-E2color-4_10.png">
+						</td>
+						<td class="campo-tabla">
+							Eventos
+						</td>
+					</tr>
+					<tr height="37px">
+						<td align="center">
+							<img alt="" src="resources/img/icons/00-ICONOS-FINALES-E2color-4_49.png">
+						</td>
+						<td class="campo-tabla">
+							Analiticos
+						</td>
+					</tr>
+					<tr height="37px">
+						<td align="center">
+							<img alt="" src="resources/img/icons/00-ICONOS-FINALES-E2color-4_08.png">
+						</td>
+						<td class="campo-tabla">
+							Ubicaci&oacute;n
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<div style="width: 1024px;">
+		<div class="col-md-12">
+			<form class="form-horizontal">
+				<fieldset>
+					<legend>Tablero en Tiempo Real</legend>
+					<table style="width: 650px; background-color: transparent;" >
+						<tr style="width: 100%">
+							<td width="10px">
+							</td>
+							<td width="100px" align="right">
+								<label class="col-md-4 control-label">Cliente</label>
+							</td>
+							<td width="500px">
 								<select ng-options="c.idcliente as c.cliente for c in Clientes"
-									class="form-control" ng-model="form.idcliente" name="cliente"></select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-4 control-label">Sitio</label>
-							<div class="col-md-8">
+								class="form-control" ng-model="form.idcliente" name="cliente"></select>
+							</td>
+							<td width="">
+							</td>
+						</tr>
+						<tr height="10px">
+						</tr>
+						<tr>
+							<td width="10px">
+							</td>
+							<td align="right">
+								<label class="col-md-4 control-label">Sitio</label>
+							</td>
+							<td>
 								<select ng-options="c.idsitio as c.nombresitio for c in Sitios"
 									class="form-control" ng-disable="form.idcliente == null"
 									ng-model="form.idsitio" name="sitios"></select>
-							</div>
+							</td>
+							<td>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<br>
+	<!-- <div class="container-fluid"> -->
+		<table class="row" border="0" style="width:103%;">
+			<tr align="center">
+				<td>
+					<h2>Consumo por Sitio</h2>
+				</td>
+				<td>
+					<h2>Consumo de las últimas 12 horas</h2>
+				</td>
+				<td>
+					<h2>Demanda Eléctrica</h2>
+				</td>
+				<td>
+					<h2>Distribución de demandas</h2>
+				</td>
+			</tr>
+			<tr align="center">
+				<td width="300px">
+					<!-- <div class="col-md-3 text-center" style="width: 100%;">
+						<h2>Consumo por Sitio</h2>
+						<h1>{{ConsumoSitio | number : 2 }}</h1>
+						<h2>kWhr</h2>
+					</div> -->
+					<table border="0" style="width: 90%; vertical-align: top;">
+						<tr>
+							<td class="col-md-3 text-center" height="100px">
+								<h1>{{ConsumoSitio | number : 2 }}</h1>
+							</td>
+						</tr>
+						<tr>
+							<td class="col-md-3 text-center">
+								<h2>kWhr</h2>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="450px">
+					<!-- <div class="col-md-3" style="width: 100%">
+						<h2>Consumo de las últimas 12 horas</h2>
+						<div>
+							<linechart data="consumos" options="options" width="500"
+								height="300"></linechart>
 						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
+					</div> -->
+					<table style="width: 100%">
+						<tr>
+							<td class="col-md-3 text-center">
+								<div>
+									<linechart data="consumos" options="options" width="500"
+										height="300"></linechart>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="col-md-3 text-center">
+								<h2></h2>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="250px" align="center">
+					<%-- <div class="col-md-3" style="width: 100%;" align="center">
+						<canvas class="gauge" id="demanda" canvasid="demanda"
+							value="demanda" max="40" min="0" unit="kWhr"
+							title="Demanda Eléctrica">
+		                </canvas>
+					</div> --%>
+					<table style="width: 100%">
+						<tr>
+							<td class="col-md-3 text-center" align="center">
+								<canvas class="gauge" id="demanda" canvasid="demanda"
+									value="demanda" max="40" min="0" unit="kWhr"
+									title="" width="200%">
+				                </canvas>
+							</td>
+						</tr>
+						<tr>
+							<td class="col-md-3 text-center">
+								<h2></h2>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="350px">
+					<div class="col-md-3" style="width: 100%">
+							<!-- 				<table class="table table-condensed"> -->
+							<!-- 					<tbody> -->
+							<!-- 						<tr ng-repeat="d in demandas"> -->
+							<!-- 							<td>{{d.nombreequipo}}</td> -->
+							<!-- 							<td>{{d.tagvalue}}</td> -->
+							<!-- 						</tr> -->
+							<!-- 					</tbody> -->
+							<!-- 				</table> -->
+							<canvas tc-chartjs-doughnut chart-options="optionsDemandas"
+								chart-data="demandas" auto-legend></canvas>
+						</div>
+				</td>
+			</tr>
+		</table>
+		<br>
 		<div class="row">
-			<div class="col-md-3 text-center">
-				<h2>Consumo por Sitio</h2>
-				<h1>{{ConsumoSitio | number : 2 }}</h1>
-				<h2>kWhr</h2>
-			</div>
-			<div class="col-md-3">
-				<h2>Consumo de las últimas 12 horas</h2>
-				<div>
-					<linechart data="consumos" options="options" width="500"
-						height="300"></linechart>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<canvas class="gauge" id="demanda" canvasid="demanda"
-					value="demanda" max="40" min="0" unit="kWhr"
-					title="Demanda Eléctrica">
-                </canvas>
-			</div>
-			<div class="col-md-3">
-				<h2>Distribución de demandas</h2>
-<!-- 				<table class="table table-condensed"> -->
-<!-- 					<tbody> -->
-<!-- 						<tr ng-repeat="d in demandas"> -->
-<!-- 							<td>{{d.nombreequipo}}</td> -->
-<!-- 							<td>{{d.tagvalue}}</td> -->
-<!-- 						</tr> -->
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-				<canvas tc-chartjs-doughnut chart-options="optionsDemandas"
-					chart-data="demandas" auto-legend></canvas>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div>{{lastRefresh | date: 'yyyy/MM/dd hh:mm:ss'}}</div>
-				<div ng-repeat="(key,data) in ArrayEquipos" class="col-md-2"
-					style="display: inline-block">
+			<div class="col-md-12" style="vertical-align: middle; background-color: #F5F5F5;" align="center">
+				
+				<div style="font-weight: bold;" align="left"><font color="#445465" size="4">Informaci&oacute;n en tiempo real</font></div>
+				<!-- <div align="left">{{lastRefresh | date: 'yyyy/MM/dd hh:mm:ss'}}</div> -->
+				<div ng-repeat="(key,data) in ArrayEquipos" style="display: inline-block; margin: 20px;" align="center"><!-- display: inline-block;   -->
 					<!-- 		<div ng-include="'/realtime/resources/templates/directives/'+ key.trim().replace(' ','') +'.html'"></div> -->
-					<table class="table table-condensed table-striped">
+					<table class="table table-condensed table-striped" border="0" style="border-bottom: 10px; width: 300px; vertical-align:top;text-align:left; display:inline; margin: 20px; border-spacing: 20px;">
 						<thead>
 							<tr>
-								<th colspan="5">{{key}}</th>
+								<td colspan="1" class="campo-tabla-equipos" align="center">
+									
+									<img alt="" src="resources/img/icons/Equipos/Acometida_icon.png" width="50px" ng-show="key.indexOf('ACOMETIDA') == 0">
+									<img alt="" src="resources/img/icons/Equipos/AireAcondicionado_icon.png" width="50px" ng-show="key.indexOf('AIRE') == 0">
+									<img alt="" src="resources/img/icons/Equipos/BancoDeBaterias_icon.png" width="50px" ng-show="key.indexOf('BANCO BATERIA') == 0">
+									<img alt="" src="resources/img/icons/Equipos/AireAcondicionado_icon.png" width="50px" ng-show="key.indexOf('CONDICIONES AMBIENTALES') == 0">
+									<img alt="" src="resources/img/icons/Equipos/PlantaDeCD_icon.png" width="50px" ng-show="key.indexOf('PLANTA DE CD') == 0">									
+									
+								</td>
+								<td class="campo-tabla-equipos" colspan="4">{{key}}</td>
+							</tr>
+							<tr style="text-align: center;">
+								<td colspan="1" class="campo-tabla-equipos">Componente</td>
+								<td colspan="1" class="campo-tabla-equipos">Variable</td>
+								<td colspan="1" class="campo-tabla-equipos"></td>
+								<td colspan="1" class="campo-tabla-equipos">Valor</td>
+								<td colspan="1" class="campo-tabla-equipos"></td>
 							</tr>
 						</thead>
 						<tr ng-repeat="v in data">
-							<td>{{v.componente}}</td>
-							<td><a my-tooltip ng-click="click()" data="v.lastMinute"
-								label="{{v.variable}}" href> {{v.variable}} <span></span>
+							<td width="90px">{{v.componente}}</td>
+							<td width="90px"><a my-tooltip ng-click="click()" data="v.lastMinute" label="{{v.variable}}" href> {{v.variable}} <span></span>
 							</a></td>
-							<td>
+							<td width="20px" align="center">
 								<div class="circle" ng-style="{'background-color': getColor(v)}"></div>
 							</td>
-							<td>{{v.tagvalue | number :2 }}</td>
-							<td ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff
-								| number:2}}</td>
+							<td align="right" width="50px">{{v.tagvalue | number :2 }}</td>
+							<td align="right" width="50px" ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff | number:2}}</td>
 						</tr>
 					</table>
 				</div>
 			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 </body>
 </html>

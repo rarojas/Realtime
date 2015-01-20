@@ -98,6 +98,9 @@ hr {
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
+span {
+	font: Arial #FFFFFF;
+}
 pre {
   overflow: auto;
 }
