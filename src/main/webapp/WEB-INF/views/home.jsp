@@ -94,7 +94,7 @@
 			<td>
 			</td>
 			<td width="" align="right">
-				<img alt="" ng-src="resources/img/logos/{{sitio.idcliente}}.png">
+				<img alt="" ng-src="resources/img/logos/{{sitio.idcliente}}.png" ng-show="sitio !== undefined" >
 			</td>
 			<td width="15px;">
 			</td>
@@ -125,7 +125,7 @@
 							Cliente:
 						</td>
 						<td class="campo-tabla-propiedad" style="width: 80%">
-							TELCEL
+							{{DatosGenerales.cliente}}
 						</td>
 					</tr>
 					<tr>
@@ -133,7 +133,7 @@
 							Regi&oacute;n:
 						</td>
 						<td class="campo-tabla-propiedad">
-							REGION 2
+							{{DatosGenerales.zonaregion}}
 						</td>
 					</tr>
 					<tr>
@@ -141,7 +141,7 @@
 							Sitio:
 						</td>
 						<td class="campo-tabla-propiedad">
-							LOS MOCHIS
+							{{DatosGenerales.nombresitio}}
 						</td>
 					</tr>
 					<tr>
@@ -149,7 +149,7 @@
 							IP:
 						</td>
 						<td class="campo-tabla-propiedad">
-							10.51.0.65
+							{{DatosGenerales.iprouter}}
 						</td>
 					</tr>
 				</table>
@@ -161,7 +161,7 @@
 								Responsable:
 							</td>
 							<td class="campo-tabla-propiedad">
-								EDGAR CADENAS
+								{{DatosGenerales.nombrecontacto}}
 							</td>
 						</tr>
 						<tr>
@@ -169,7 +169,7 @@
 								Telefono:
 							</td>
 							<td class="campo-tabla-propiedad">
-								00-0000-0000
+								{{DatosGenerales.telefono}}
 							</td>
 						</tr>
 						<tr>
@@ -177,7 +177,7 @@
 								Puesto:
 							</td>
 							<td class="campo-tabla-propiedad">
-								SUPERVISOR
+								{{DatosGenerales.puesto}}
 							</td>
 						</tr>
 						<tr>
@@ -185,7 +185,7 @@
 								Correo:
 							</td>
 							<td class="campo-tabla-propiedad">
-								edgar.cardenas@mail.telcel.com
+								{{DatosGenerales.correo}}
 							</td>
 						</tr>
 					</table>

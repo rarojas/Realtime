@@ -7,6 +7,7 @@ import java.util.Locale;
 
 import mappers.ClienteMapper;
 import mappers.ConsumosMapper;
+import mappers.DatosGeneralesMapper;
 import mappers.EquipoMapper;
 import mappers.SitioMapper;
 import mappers.VariableMapper;
@@ -135,14 +136,13 @@ public class HomeController {
 		return consumos;
 	}
 	
-	@RequestMapping(value = "/sitio/DatosGenerales/{nombresitio}", method = RequestMethod.GET)
+	@RequestMapping(value = "/sitio/DatosGenerales/{idsitio}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Consumo> DatosGenerales(@PathVariable String nombresitio) {		
-		String sql = String.format("SELECT  hora,SUM(valor) as consumo FROM 5minutales where  tipoequipo = 'ACOMETIDA'" 
-					+" and variable = 'CONSUMO' and sitio = ? AND tagtimestamp >  "
-					+ "SUBDATE(NOW(), INTERVAL 12 HOUR) group by sitio,hora",nombresitio);
-		List<Consumo> consumos = mysql.query(sql,new Object[] { nombresitio }, new  ConsumosMapper());		
-		return consumos;
+	public List<com.energyview.realtime.model.DatosGenerales> DatosGenerales(@PathVariable String idsitio) {		
+		String sql = String.format("select LIMIT 1 cliente,zonaregion,nombresitio,iprouter, nombrecontacto,telefono,puesto,correo"
+				+ " from ext_cognos where idsitio = '%s';",idsitio);
+		List<com.energyview.realtime.model.DatosGenerales> datos = informix.query(sql, new  DatosGeneralesMapper());		
+		return datos;
 	}
 
 	

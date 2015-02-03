@@ -76,6 +76,10 @@ app.factory("RTServices", function($resource) {
 			url : "/realtime/sitio/consumolast12/:sitio",
 			isArray : true
 		},
+		DatosGenerales : {
+			url : "/realtime/sitio/DatosGenerales/:idsitio",
+			isArray : true
+		},
 		ConsumoSitio : {
 			url : "/realtime/sitio/consumo/:sitio",
 			isArray : false
@@ -141,11 +145,24 @@ app
 					                 {color:"#46BFBD",highlight:"#5AD3D1"},
 					                 {color:"#FDB45C",highlight:"#FFC870"},
 					                 {color:"#949FB1",highlight:"#A8B3C5"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#F7464A",highlight:"#FF5A5E"},
+					                 {color:"#46BFBD",highlight:"#5AD3D1"},
+					                 {color:"#FDB45C",highlight:"#FFC870"},
+					                 {color:"#949FB1",highlight:"#A8B3C5"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#F7464A",highlight:"#FF5A5E"},
+					                 {color:"#46BFBD",highlight:"#5AD3D1"},
+					                 {color:"#FDB45C",highlight:"#FFC870"},
+					                 {color:"#949FB1",highlight:"#A8B3C5"},
 					                 {color:"#4D5360",highlight:"#616774"}];
 
 					$scope.optionsDemandas = {
 						// Sets the chart to be responsive
-						responsive : true,
+						responsive : false,
 						// Boolean - Whether we should show a stroke on each
 						// segment
 						segmentShowStroke : true,
@@ -221,13 +238,15 @@ app
 							return 'red';
 						return 'purple';
 					};
-					$scope.$watch(
-									"form.idsitio",
+					$scope.$watch("form.idsitio",
 									function(newValue) {
 										if (!newValue)
 											return;
 										$scope.Equipos = [];
-										$scope.sitio = $scope.getSitio(newValue);
+										$scope.sitio = $scope.getSitio(newValue);										
+										RTServices.Sitios.DatosGenerales({idsitio : $scope.sitio.idsitio},function(response){
+											$scope.DatosGenerales = response[0];																						
+										});
 										RTServices.Sitios
 												.ConsumoSitio(
 														{

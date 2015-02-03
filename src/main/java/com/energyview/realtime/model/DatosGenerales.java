@@ -2,13 +2,13 @@ package com.energyview.realtime.model;
 
 public class DatosGenerales {
 	
-	public String Cliente;
-	public String Region;
-	public String Sitio;
-	public String IP;
-	public String Responsable;
-	public String Telefono;
-	public String Puesto;
-	public String Correo;
+	public String cliente;
+	public String zonaregion;
+	public String nombresitio;
+	public String iprouter;
+	public String nombrecontacto;
+	public String telefono;
+	public String puesto;
+	public String correo;
 	
 }
