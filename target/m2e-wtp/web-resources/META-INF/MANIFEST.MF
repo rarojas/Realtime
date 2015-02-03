@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: habil
-Build-Jdk: 1.8.0_05
+Build-Jdk: 1.7.0_71
+Built-By: rrojase
 Created-By: Maven Integration for Eclipse
 

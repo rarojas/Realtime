@@ -77,9 +77,9 @@
 						</tr>
 						<tr style="100%">
 							<td align="center" height="10px">
-								<span><font color="#FFFFFF" size="5">LOS MOCHIS</font></span>
-								<span ><font color="#69BE28" size="5"> | </font></span>
-								<span><font color="#69BE28" size="5">CENTRAL</font></span>
+								<span><font color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span>
+								<span ><font color="#69BE28" size="5"></font></span>
+								<span><font color="#69BE28" size="5">{{sitio.clasificacionsitio}}</font></span>
 							</td>
 						</tr>
 						<tr>
@@ -94,7 +94,7 @@
 			<td>
 			</td>
 			<td width="" align="right">
-				<img alt="" src="resources/img/logos/Telcel.png">
+				<img alt="" ng-src="resources/img/logos/{{sitio.idcliente}}.png">
 			</td>
 			<td width="15px;">
 			</td>

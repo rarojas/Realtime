@@ -17,8 +17,11 @@ public class SitioMapper implements RowMapper<Sitio> {
 		sitio.codigopostal = rs.getString("codigopostal");
 		sitio.domicilio = rs.getString("domicilio");
 		sitio.gpslatitud = rs.getString("gpslatitud");
-		sitio.gpslongitud = rs.getString("gpslongitud");		
+		sitio.gpslongitud = rs.getString("gpslongitud");
+		sitio.clasificacionsitio = rs.getString("clasificacionsitio");
+		sitio.idcliente = rs.getString("idcliente");
 		return sitio;
 	}
 
 }
+

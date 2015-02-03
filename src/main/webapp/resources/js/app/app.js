@@ -126,6 +126,21 @@ app
 					                 {color:"#46BFBD",highlight:"#5AD3D1"},
 					                 {color:"#FDB45C",highlight:"#FFC870"},
 					                 {color:"#949FB1",highlight:"#A8B3C5"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#F7464A",highlight:"#FF5A5E"},
+					                 {color:"#46BFBD",highlight:"#5AD3D1"},
+					                 {color:"#FDB45C",highlight:"#FFC870"},
+					                 {color:"#949FB1",highlight:"#A8B3C5"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#F7464A",highlight:"#FF5A5E"},
+					                 {color:"#46BFBD",highlight:"#5AD3D1"},
+					                 {color:"#FDB45C",highlight:"#FFC870"},
+					                 {color:"#949FB1",highlight:"#A8B3C5"},
+					                 {color:"#4D5360",highlight:"#616774"},
+					                 {color:"#F7464A",highlight:"#FF5A5E"},
+					                 {color:"#46BFBD",highlight:"#5AD3D1"},
+					                 {color:"#FDB45C",highlight:"#FFC870"},
+					                 {color:"#949FB1",highlight:"#A8B3C5"},
 					                 {color:"#4D5360",highlight:"#616774"}];
 
 					$scope.optionsDemandas = {
@@ -206,24 +221,23 @@ app
 							return 'red';
 						return 'purple';
 					};
-					$scope
-							.$watch(
+					$scope.$watch(
 									"form.idsitio",
 									function(newValue) {
 										if (!newValue)
 											return;
 										$scope.Equipos = [];
-										var sitio = $scope.getSitio(newValue);
+										$scope.sitio = $scope.getSitio(newValue);
 										RTServices.Sitios
 												.ConsumoSitio(
 														{
-															sitio : sitio.nombresitio
+															sitio : $scope.sitio.nombresitio
 														},
 														function(response) {
 															$scope.ConsumoSitio = response.consumo;
 														});
 										RTServices.Sitios.ConsumoSitioLast12({
-											sitio : sitio.nombresitio
+											sitio : $scope.sitio.nombresitio
 										}, function(response) {
 											$scope.consumos = response;
 										});
