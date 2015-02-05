@@ -1,0 +1,23 @@
+<div class="modal-header">
+	<h3 class="modal-title">Ubicaci&oacute;n del Sitio
+		{{sitio.nombresitio}}</h3>
+</div>
+<style>
+.map {
+	heigth: 600px;
+}
+</style>
+<div class="modal-body">
+	<div gm-info-window="infoWindow">
+		<h4>{{selectedSitio.nombresitio}}</h4>
+		{{selectedSitio.domicilio}}
+	</div>
+	<gm-map gm-map-id="'MapSitios'" gm-center="center" gm-zoom="zoom"
+		gm-map-options="optionsMaps.map" class="map"> <gm-markers
+		gm-objects="sitios" gm-id="object.nombresitio"
+		gm-position="{ lat: object.lat, lng: object.log }"
+		gm-marker-options="{ title: object.nombresitio, clickable: true }"
+		gm-events="markerEvents"
+		gm-on-openinfowindow="selectedSitio = object; infoWindow.open(marker.getMap(), marker);"
+		gm-on-click="triggerOpenInfoWindow(object)"> </gm-markers> </gm-map>
+</div>

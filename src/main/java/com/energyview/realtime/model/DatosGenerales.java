@@ -10,5 +10,6 @@ public class DatosGenerales {
 	public String telefono;
 	public String puesto;
 	public String correo;
-	
+	public String lat;
+	public String log;	
 }

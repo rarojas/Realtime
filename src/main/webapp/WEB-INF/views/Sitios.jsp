@@ -2,7 +2,7 @@
 <%@ page session="false"%>
 <html ng-app="Realtime">
 <head>
-<title>Home</title>
+<title>Ubicaciones de Sitios</title>
 <link
 	href="<c:url value="/resources/js/twitter-bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet" />
@@ -24,15 +24,6 @@
 <body ng-controller="SitiosCtrl">
 	<div class="container-fluid">
 		<h3>Sitios</h3>
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-md-12"> -->
-<!-- 				<form class="form-inline" role="form" novalidate> -->
-<!-- 					<div class="form-group "> -->
-<!-- 					<label class="control-label"></label> -->
-<!-- 					</div> -->
-<!-- 				</form> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
 		<div class="row">
 			<div class="col-md-6">
 				<table class="table table-condensed">

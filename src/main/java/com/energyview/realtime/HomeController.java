@@ -139,7 +139,7 @@ public class HomeController {
 	@RequestMapping(value = "/sitio/DatosGenerales/{idsitio}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<com.energyview.realtime.model.DatosGenerales> DatosGenerales(@PathVariable String idsitio) {		
-		String sql = String.format("select LIMIT 1 cliente,zonaregion,nombresitio,iprouter, nombrecontacto,telefono,puesto,correo"
+		String sql = String.format("select LIMIT 1 cliente,zonaregion,nombresitio,iprouter, nombrecontacto,telefono,puesto,correo,gpslongitud,gpslatitud "
 				+ " from ext_cognos where idsitio = '%s';",idsitio);
 		List<com.energyview.realtime.model.DatosGenerales> datos = informix.query(sql, new  DatosGeneralesMapper());		
 		return datos;

@@ -20,7 +20,7 @@ app.controller("SitiosCtrl", function($scope, RTServices, $interval) {
 			center : new google.maps.LatLng(19.473976, -99.199247),
 			zoom : 6,
 			mapTypeId : google.maps.MapTypeId.ROADMAP
-		},
+		}
 	};
 	$scope.triggerOpenInfoWindow = function(sitio) {
 		$scope.markerEvents = [ {

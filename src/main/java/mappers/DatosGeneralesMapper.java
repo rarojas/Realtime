@@ -21,6 +21,8 @@ public class DatosGeneralesMapper implements RowMapper<DatosGenerales>{
 		datos.correo =  rs.getString("correo");
 		datos.puesto =  rs.getString("puesto");
 		datos.iprouter =  rs.getString("iprouter");		
+		datos.log =  rs.getString("gpslongitud");
+		datos.lat =  rs.getString("gpslatitud");	
 		return datos;
 	}
 

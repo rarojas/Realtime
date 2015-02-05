@@ -1,4 +1,6 @@
-var app = angular.module("Realtime",["ngResource", "ngRoute", 'n3-line-chart','tc.chartjs','angular-loading-bar']);
+var app = angular.module("Realtime", [ "ngResource", "ngRoute",
+		'n3-line-chart', 'tc.chartjs', 'angular-loading-bar', 'ui.bootstrap',
+		"AngularGM" ]);
 
 // app.directive(
 // 'myTooltip',
@@ -90,32 +92,29 @@ app.factory("RTServices", function($resource) {
 app
 		.controller(
 				"MainCtrl",
-				function($scope, RTServices, $interval, $filter) {
-					
+				function($scope, RTServices, $interval, $filter, $modal) {
+
 					$scope.mostrar = false;
-					
-					$scope.ExpandCollapse = function(){
-						//alert("$scope.mostrar" + $scope.mostrar);
-						if($scope.mostrar){
+
+					$scope.ExpandCollapse = function() {
+						// alert("$scope.mostrar" + $scope.mostrar);
+						if ($scope.mostrar) {
 							$scope.mostrar = false;
-						}else{
+						} else {
 							$scope.mostrar = true;
 						}
-						
+
 					};
-					
-					$scope.validarImagen = function(key){
-						//alert("key: " + key);
+					$scope.validarImagen = function(key) {
 						var descripcion = key;
-						if(descripcion.contains('AIRE')){
+						if (descripcion.contains('AIRE')) {
 							alert("Continene aire");
 							return false;
-						}else {
+						} else {
 							return true;
 						}
 					};
-					
-					
+
 					$scope.Clientes = RTServices.Clientes.query();
 					$scope.Equipos = [];
 					$scope.consumos = [];
@@ -126,62 +125,116 @@ app
 							return item.idsitio === idsitio;
 						}, true)[0];
 					};
-					$scope.colors = [{color:"#F7464A",highlight:"#FF5A5E"},
-					                 {color:"#46BFBD",highlight:"#5AD3D1"},
-					                 {color:"#FDB45C",highlight:"#FFC870"},
-					                 {color:"#949FB1",highlight:"#A8B3C5"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#F7464A",highlight:"#FF5A5E"},
-					                 {color:"#46BFBD",highlight:"#5AD3D1"},
-					                 {color:"#FDB45C",highlight:"#FFC870"},
-					                 {color:"#949FB1",highlight:"#A8B3C5"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#F7464A",highlight:"#FF5A5E"},
-					                 {color:"#46BFBD",highlight:"#5AD3D1"},
-					                 {color:"#FDB45C",highlight:"#FFC870"},
-					                 {color:"#949FB1",highlight:"#A8B3C5"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#F7464A",highlight:"#FF5A5E"},
-					                 {color:"#46BFBD",highlight:"#5AD3D1"},
-					                 {color:"#FDB45C",highlight:"#FFC870"},
-					                 {color:"#949FB1",highlight:"#A8B3C5"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#F7464A",highlight:"#FF5A5E"},
-					                 {color:"#46BFBD",highlight:"#5AD3D1"},
-					                 {color:"#FDB45C",highlight:"#FFC870"},
-					                 {color:"#949FB1",highlight:"#A8B3C5"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#4D5360",highlight:"#616774"},
-					                 {color:"#F7464A",highlight:"#FF5A5E"},
-					                 {color:"#46BFBD",highlight:"#5AD3D1"},
-					                 {color:"#FDB45C",highlight:"#FFC870"},
-					                 {color:"#949FB1",highlight:"#A8B3C5"},
-					                 {color:"#4D5360",highlight:"#616774"}];
+					$scope.colors = [ {
+						color : "#F7464A",
+						highlight : "#FF5A5E"
+					}, {
+						color : "#46BFBD",
+						highlight : "#5AD3D1"
+					}, {
+						color : "#FDB45C",
+						highlight : "#FFC870"
+					}, {
+						color : "#949FB1",
+						highlight : "#A8B3C5"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#F7464A",
+						highlight : "#FF5A5E"
+					}, {
+						color : "#46BFBD",
+						highlight : "#5AD3D1"
+					}, {
+						color : "#FDB45C",
+						highlight : "#FFC870"
+					}, {
+						color : "#949FB1",
+						highlight : "#A8B3C5"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#F7464A",
+						highlight : "#FF5A5E"
+					}, {
+						color : "#46BFBD",
+						highlight : "#5AD3D1"
+					}, {
+						color : "#FDB45C",
+						highlight : "#FFC870"
+					}, {
+						color : "#949FB1",
+						highlight : "#A8B3C5"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#F7464A",
+						highlight : "#FF5A5E"
+					}, {
+						color : "#46BFBD",
+						highlight : "#5AD3D1"
+					}, {
+						color : "#FDB45C",
+						highlight : "#FFC870"
+					}, {
+						color : "#949FB1",
+						highlight : "#A8B3C5"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#F7464A",
+						highlight : "#FF5A5E"
+					}, {
+						color : "#46BFBD",
+						highlight : "#5AD3D1"
+					}, {
+						color : "#FDB45C",
+						highlight : "#FFC870"
+					}, {
+						color : "#949FB1",
+						highlight : "#A8B3C5"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					}, {
+						color : "#F7464A",
+						highlight : "#FF5A5E"
+					}, {
+						color : "#46BFBD",
+						highlight : "#5AD3D1"
+					}, {
+						color : "#FDB45C",
+						highlight : "#FFC870"
+					}, {
+						color : "#949FB1",
+						highlight : "#A8B3C5"
+					}, {
+						color : "#4D5360",
+						highlight : "#616774"
+					} ];
 
 					$scope.optionsDemandas = {
-						// Sets the chart to be responsive
 						responsive : false,
-						// Boolean - Whether we should show a stroke on each
-						// segment
 						segmentShowStroke : true,
-						// String - The colour of each segment stroke
 						segmentStrokeColor : '#fff',
-						// Number - The width of each segment stroke
 						segmentStrokeWidth : 2,
-						// Number - The percentage of the chart that we cut out
-						// of the middle
-						percentageInnerCutout : 50, // This is 0 for Pie charts
-						// Number - Amount of animation steps
-						animationSteps : 100,
-						// String - Animation easing effect
+						percentageInnerCutout : 10,
+						animationSteps : 50,
 						animationEasing : 'easeOutBounce',
-						// Boolean - Whether we animate the rotation of the
-						// Doughnut
 						animateRotate : true,
-						// Boolean - Whether we animate scaling the Doughnut
-						// from the centre
 						animateScale : false,
 						legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
 					};
@@ -238,15 +291,53 @@ app
 							return 'red';
 						return 'purple';
 					};
-					$scope.$watch("form.idsitio",
+					$scope.ViewMap = function() {
+						var modalInstance = $modal
+								.open({
+									size : 'lg',
+									templateUrl : 'resources/templates/directives/ViewMap.html',
+									resolve : {
+										center : function() {
+											return [ $scope.DatosGenerales ];
+										}
+									},
+									controller : function($scope, center) {
+										$scope.sitios = center;
+										$scope.sitio = center[0];
+										$scope.optionsMaps = {
+											map : {
+												center : new google.maps.LatLng(center[0].lat,center[0].log),
+												zoom : 6,
+												mapTypeId : google.maps.MapTypeId.ROADMAP
+											}
+										};
+										$scope.triggerOpenInfoWindow = function(
+												sitio) {
+											$scope.markerEvents = [ {
+												event : 'openinfowindow',
+												ids : [ sitio.nombresitio ]
+											}, ];
+										};
+									}
+								});
+					};
+					$scope
+							.$watch(
+									"form.idsitio",
 									function(newValue) {
 										if (!newValue)
 											return;
 										$scope.Equipos = [];
-										$scope.sitio = $scope.getSitio(newValue);										
-										RTServices.Sitios.DatosGenerales({idsitio : $scope.sitio.idsitio},function(response){
-											$scope.DatosGenerales = response[0];																						
-										});
+										$scope.sitio = $scope
+												.getSitio(newValue);
+										RTServices.Sitios
+												.DatosGenerales(
+														{
+															idsitio : $scope.sitio.idsitio
+														},
+														function(response) {
+															$scope.DatosGenerales = response[0];
+														});
 										RTServices.Sitios
 												.ConsumoSitio(
 														{
@@ -274,8 +365,11 @@ app
 																		if ($scope.Equipos.length > 0) {
 																			$scope.demandas = [];
 																			for (var i = 0; i < data.length; i++) {
-//																				if (!$scope.Equipos[i].lastMinute)
-//																					$scope.Equipos[i].lastMinute = [];
+																				// if
+																				// (!$scope.Equipos[i].lastMinute)
+																				// $scope.Equipos[i].lastMinute
+																				// =
+																				// [];
 																				$scope.Equipos[i].diff = $scope.Equipos[i].tagvalue
 																						- data[i].tagvalue;
 																				$scope.Equipos[i].tagvalue = data[i].tagvalue;
@@ -287,10 +381,10 @@ app
 																								.push({
 																									nombreequipo : data[i].nombreequipo,
 																									tagvalue : data[i].tagvalue,
-																									value :data[i].tagvalue,
-																									label: data[i].nombreequipo,
-																									color: $scope.colors[$scope.demandas.length].color,
-																									highlight: $scope.colors[$scope.demandas.length].highlight
+																									value : data[i].tagvalue,
+																									label : data[i].nombreequipo,
+																									color : $scope.colors[$scope.demandas.length].color,
+																									highlight : $scope.colors[$scope.demandas.length].highlight
 																								});
 
 																				}
