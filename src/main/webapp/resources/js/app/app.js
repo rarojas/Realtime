@@ -141,90 +141,54 @@ app
 						color : "#4D5360",
 						highlight : "#616774"
 					}, {
-						color : "#F7464A",
-						highlight : "#FF5A5E"
+						color : "#B6050A",
+						highlight : "#F40006"
 					}, {
-						color : "#46BFBD",
-						highlight : "#5AD3D1"
+						color : "#9A044B",
+						highlight : "#CD0061"
 					}, {
-						color : "#FDB45C",
-						highlight : "#FFC870"
-					}, {
-						color : "#949FB1",
-						highlight : "#A8B3C5"
-					}, {
-						color : "#4D5360",
-						highlight : "#616774"
-					}, {
-						color : "#F7464A",
-						highlight : "#FF5A5E"
-					}, {
-						color : "#46BFBD",
-						highlight : "#5AD3D1"
-					}, {
-						color : "#FDB45C",
-						highlight : "#FFC870"
+						color : "#CD0061",
+						highlight : "#6C05A4"
 					}, {
 						color : "#949FB1",
 						highlight : "#A8B3C5"
 					}, {
-						color : "#4D5360",
-						highlight : "#616774"
+						color : "#27127F",
+						highlight : "#2C0DAA"
 					}, {
-						color : "#F7464A",
-						highlight : "#FF5A5E"
-					}, {
-						color : "#46BFBD",
-						highlight : "#5AD3D1"
-					}, {
-						color : "#FDB45C",
-						highlight : "#FFC870"
-					}, {
-						color : "#949FB1",
-						highlight : "#A8B3C5"
-					}, {
-						color : "#4D5360",
-						highlight : "#616774"
-					}, {
-						color : "#4D5360",
-						highlight : "#616774"
-					}, {
-						color : "#F7464A",
-						highlight : "#FF5A5E"
+						color : "#0F377A",
+						highlight : "#0A43A3"
 					}, {
 						color : "#46BFBD",
 						highlight : "#5AD3D1"
 					}, {
-						color : "#FDB45C",
-						highlight : "#FFC870"
+						color : "#085573",
+						highlight : "#04719A"
 					}, {
-						color : "#949FB1",
-						highlight : "#A8B3C5"
-					}, {
-						color : "#4D5360",
-						highlight : "#616774"
+						color : "#037364",
+						highlight : "#009A85"
 					}, {
 						color : "#4D5360",
 						highlight : "#616774"
 					}, {
-						color : "#4D5360",
-						highlight : "#616774"
+						color : "#048044",
+						highlight : "#00AB59"
 					}, {
-						color : "#F7464A",
-						highlight : "#FF5A5E"
+						color : "#239B04",
+						highlight : "#2BCF00"
 					}, {
-						color : "#46BFBD",
-						highlight : "#5AD3D1"
+						color : "#2BCF00",
+						highlight : "#90E400"
 					}, {
-						color : "#FDB45C",
-						highlight : "#FFC870"
-					}, {
-						color : "#949FB1",
-						highlight : "#A8B3C5"
+						color : "#90E400",
+						highlight : "#CBEF00"
 					}, {
 						color : "#4D5360",
 						highlight : "#616774"
-					} ];
+					}, {
+						color : "#B8B505",
+						highlight : "#F6F100"
+					},  ];
 
 					$scope.optionsDemandas = {
 						responsive : false,
