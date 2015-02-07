@@ -1,0 +1,14 @@
+<div>
+	<table class="table table-condensed table-striped">
+		<thead>
+			<tr>
+				<th><img ng-src="/realtime/resources/img/icons/{{key.trim().replace(' ','')}}.png" style="width:50px"/></th>
+				<th>{{key}}</th>
+			</tr>
+		</thead>
+		<tr ng-repeat="v in data">
+			<td>{{v.variable}}</td>
+			<td>{{v.tagvalue | number :2 }}</td>
+		</tr>
+	</table>
+</div>
