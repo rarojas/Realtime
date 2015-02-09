@@ -94,8 +94,11 @@ app
 				"MainCtrl",
 				function($scope, RTServices, $interval, $filter, $modal) {
 					$scope.mostrar = false;
+<<<<<<< HEAD
 					$scope.Today = new Date();
 					$scope.FirstDay = new Date(2015, 1, 1);
+=======
+>>>>>>> origin/master
 					$scope.ExpandCollapse = function() {
 						if ($scope.mostrar) {
 							$scope.mostrar = false;

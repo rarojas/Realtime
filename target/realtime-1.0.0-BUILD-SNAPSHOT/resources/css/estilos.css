@@ -1,0 +1,22 @@
+.tabla {
+	background-color: #344352;
+	font-size: 14px;
+}
+.titulo-tabla{
+	color:#69BE28;
+	font-weight: bold;
+}
+.campo-tabla{
+	color:#FFFFFF;
+	font-weight: bold;
+}
+.campo-tabla-propiedad{
+	color:#FFFFFF;
+}
+
+.campo-tabla-equipos{
+	color:#FFFFFF;
+	font-weight: bold;
+	background-color: #344352;
+}
+

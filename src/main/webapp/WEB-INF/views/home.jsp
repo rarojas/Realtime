@@ -233,8 +233,7 @@
 							<td width="10px"></td>
 							<td align="right"><label class="col-md-4 control-label">Sitio</label>
 							</td>
-							<td><select
-								ng-options="c.idsitio as c.nombresitio for c in Sitios"
+							<td><select ng-options="c.idsitio as c.nombresitio for c in Sitios"
 								class="form-control" ng-disable="form.idcliente == null"
 								ng-model="form.idsitio" name="sitios"></select></td>
 							<td></td>
@@ -247,7 +246,11 @@
 	<br>
 	<!-- <div class="container-fluid"> -->
 	<table class="row" border="0" style="width: 103%;">
+<<<<<<< HEAD
 		<tr align="center">
+=======
+		<tr align="center">	
+>>>>>>> origin/master
 			<td>
 				<h2>Consumo de las últimas 12 horas</h2>
 			</td>
@@ -258,7 +261,11 @@
 				<h2>Distribución de demandas</h2>
 			</td>
 		</tr>
+<<<<<<< HEAD
 		<tr align="center">
+=======
+		<tr align="center">			
+>>>>>>> origin/master
 			<td width="400px">
 				<table style="width: 100%">
 					<tr>
@@ -281,14 +288,27 @@
 					<tr>
 						<td class="col-md-3 text-center" align="center">
 							<canvas class="gauge" id="demanda" canvasid="demanda"
+<<<<<<< HEAD
 								value="demanda" max="40" min="0" unit="kW" title=""
 								width="200%">
+=======
+								 value="demanda" max="40" min="0"
+								unit="kWhr" title="" width="200%">
+>>>>>>> origin/master
 				                </canvas>
 						</td>
 					</tr>
 					<tr>
 						<td class="col-md-3 text-center">
 							<h1>Consumo del Sitio</h1>
+<<<<<<< HEAD
+=======
+						</td>
+					</tr>
+					<tr>
+						<td class="col-md-3 text-center">
+							<h1>{{ConsumoSitio | number : 2 }} kWhr</h1>
+>>>>>>> origin/master
 						</td>
 					</tr>
 					<tr>
@@ -307,8 +327,13 @@
 			</td>
 			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
+<<<<<<< HEAD
 					<canvas tc-chartjs-doughnut chart-options="optionsDemandas"
 						style="float: left" chart-data="demandas" auto-legend></canvas>
+=======
+					<canvas tc-chartjs-doughnut chart-options="optionsDemandas" style="float: left"
+						chart-data="demandas" auto-legend></canvas>
+>>>>>>> origin/master
 				</div>
 			</td>
 		</tr>
