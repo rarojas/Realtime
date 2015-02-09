@@ -27,8 +27,8 @@
 	rel="stylesheet" />
 <link
 	href="<c:url value="/resources/js/angular-blockui/angular-block-ui.min.css" />"
-	rel="stylesheet" />	
-	
+	rel="stylesheet" />
+
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="<c:url value="/resources/js/chartjs/Chart.min.js" />"></script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -75,6 +75,7 @@
 	list-style-type: none;
 	padding-left: 0px;
 	text-align: left;
+	float: right;
 }
 
 .circle {
@@ -195,18 +196,7 @@
 			<td width="80px"></td>
 			<td width="" align="center">
 				<table class="tabla">
-					<tr height="37px">
-						<td align="center" style="width: 80px;"><img alt=""
-							src="resources/img/icons/00-ICONOS-FINALES-E2color-4_10.png">
-						</td>
-						<td class="campo-tabla">Eventos</td>
-					</tr>
-					<tr height="37px">
-						<td align="center"><img alt=""
-							src="resources/img/icons/00-ICONOS-FINALES-E2color-4_49.png">
-						</td>
-						<td class="campo-tabla">Analiticos</td>
-					</tr>
+					
 					<tr height="37px">
 						<td align="center"><img alt=""
 							src="resources/img/icons/00-ICONOS-FINALES-E2color-4_08.png">
@@ -259,9 +249,6 @@
 	<table class="row" border="0" style="width: 103%;">
 		<tr align="center">
 			<td>
-				<h2>Consumo por Sitio</h2>
-			</td>
-			<td>
 				<h2>Consumo de las últimas 12 horas</h2>
 			</td>
 			<td>
@@ -272,21 +259,7 @@
 			</td>
 		</tr>
 		<tr align="center">
-			<td width="300px">
-				<table border="0" style="width: 90%; vertical-align: top;">
-					<tr>
-						<td class="col-md-3 text-center" height="100px">
-							<h1>{{ConsumoSitio | number : 2 }}</h1>
-						</td>
-					</tr>
-					<tr>
-						<td class="col-md-3 text-center">
-							<h2>kWhr</h2>
-						</td>
-					</tr>
-				</table>
-			</td>
-			<td width="450px">
+			<td width="400px">
 				<table style="width: 100%">
 					<tr>
 						<td class="col-md-3 text-center">
@@ -303,33 +276,39 @@
 					</tr>
 				</table>
 			</td>
-			<td width="250px" align="center">
-				<%-- <div class="col-md-3" style="width: 100%;" align="center">
-						<canvas class="gauge" id="demanda" canvasid="demanda"
-							value="demanda" max="40" min="0" unit="kWhr"
-							title="Demanda Eléctrica">
-		                </canvas>
-					</div> --%>
+			<td width="200px" align="center">
 				<table style="width: 100%">
 					<tr>
 						<td class="col-md-3 text-center" align="center">
 							<canvas class="gauge" id="demanda" canvasid="demanda"
-								value="demanda" max="40" min="0" unit="kWhr" title=""
+								value="demanda" max="40" min="0" unit="kW" title=""
 								width="200%">
 				                </canvas>
 						</td>
 					</tr>
 					<tr>
 						<td class="col-md-3 text-center">
-							<h2></h2>
+							<h1>Consumo del Sitio</h1>
 						</td>
 					</tr>
+					<tr>
+						<td class="col-md-3 text-center">
+							<h1>{{ConsumoSitio | number : 2 }} kWhr</h1>
+						</td>
+					</tr>
+					<tr>
+						<td class="col-md-3 text-center">
+							<h1>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today
+								| date :'dd/MM/yyyy' }}</h1>
+						</td>
+					</tr>
+
 				</table>
 			</td>
-			<td width="350px">
+			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
 					<canvas tc-chartjs-doughnut chart-options="optionsDemandas"
-						chart-data="demandas" auto-legend></canvas>
+						style="float: left" chart-data="demandas" auto-legend></canvas>
 				</div>
 			</td>
 		</tr>
@@ -368,6 +347,9 @@
 								ng-show="key.indexOf('CONDICIONES AMBIENTALES') == 0"> <img
 								alt="" src="resources/img/icons/Equipos/PlantaDeCD_icon.png"
 								width="50px" ng-show="key.indexOf('PLANTA DE CD') == 0">
+								 <img
+								alt="" src="resources/img/icons/Equipos/energiaElectrica_icon.png"
+								width="50px" ng-show="key.indexOf('ILUMINACION') == 0">
 							</td>
 							<td class="campo-tabla-equipos" colspan="5">{{key}}</td>
 						</tr>
@@ -380,7 +362,7 @@
 							<td colspan="1" class="campo-tabla-equipos"></td>
 						</tr>
 					</thead>
-					<tr ng-repeat="v in data">
+					<tr ng-repeat="v in data | orderBy : componente">
 						<td width="90px">{{v.componente}}</td>
 						<td width="90px"><a my-tooltip ng-click="click()"
 							data="v.lastMinute" label="{{v.variable}}" href>
@@ -390,7 +372,7 @@
 							<div class="circle" ng-style="{'background-color': getColor(v)}"></div>
 						</td>
 						<td align="right" width="50px">{{v.tagvalue | number :2 }}</td>
-						<td align="right" width="50px">{{v.unidadmedicion }}</td>
+						<td align="right" width="50px">{{ UnidadMedida(v.unidadmedicion) }}</td>
 						<td align="right" width="50px"
 							ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff |
 							number:2}}</td>

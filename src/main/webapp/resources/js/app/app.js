@@ -93,17 +93,15 @@ app
 		.controller(
 				"MainCtrl",
 				function($scope, RTServices, $interval, $filter, $modal) {
-
 					$scope.mostrar = false;
-
+					$scope.Today = new Date();
+					$scope.FirstDay = new Date(2015, 1, 1);
 					$scope.ExpandCollapse = function() {
-						// alert("$scope.mostrar" + $scope.mostrar);
 						if ($scope.mostrar) {
 							$scope.mostrar = false;
 						} else {
 							$scope.mostrar = true;
 						}
-
 					};
 					$scope.validarImagen = function(key) {
 						var descripcion = key;
@@ -188,7 +186,7 @@ app
 					}, {
 						color : "#B8B505",
 						highlight : "#F6F100"
-					},  ];
+					}, ];
 
 					$scope.optionsDemandas = {
 						responsive : false,
@@ -216,7 +214,7 @@ app
 								type : "linear",
 								key : 'hora',
 								labelFunction : function(value) {
-									return value + ':00';
+									return (value - 6) + ':00';
 								}
 							},
 							y : {
@@ -255,6 +253,26 @@ app
 							return 'red';
 						return 'purple';
 					};
+					$scope.UnidadMedida = function(value) {
+						switch (value) {
+						case 'CORRIENTE':
+							return 'A';
+						case 'VOLTAJE':
+							return ' V';
+						case 'DEMANDA':
+							return 'KW';
+						case 'FRECUENCIA':
+							return 'HZ';
+						case 'CONSUMO':
+							return 'KWHR';
+						case 'TEMPERATURA':
+							return '°C';
+						case 'HUMEDAD':
+							return '%';
+						}
+						return '';
+					};
+
 					$scope.ViewMap = function() {
 						var modalInstance = $modal
 								.open({
@@ -270,7 +288,9 @@ app
 										$scope.sitio = center[0];
 										$scope.optionsMaps = {
 											map : {
-												center : new google.maps.LatLng(center[0].lat,center[0].log),
+												center : new google.maps.LatLng(
+														center[0].lat,
+														center[0].log),
 												zoom : 6,
 												mapTypeId : google.maps.MapTypeId.ROADMAP
 											}
