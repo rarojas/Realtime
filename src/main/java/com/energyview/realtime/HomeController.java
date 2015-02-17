@@ -107,7 +107,7 @@ public class HomeController {
 	@ResponseBody
 	public List<Variable> SitioEquipos(@PathVariable String idsitio) {
 		List<Variable> variables = informix.query(
-				"Select * from ext_cognos where idsitio = ? and flagtr = 't' order by  variable desc,componente",
+				"Select * from ext_cognos where idsitio = ? and flagtr = 't' order by  componente, variable desc",
 				new Object[] { idsitio }, new VariableMapper());
 		return variables;
 	}
