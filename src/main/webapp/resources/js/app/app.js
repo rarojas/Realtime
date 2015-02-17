@@ -22,7 +22,7 @@ var app = angular.module("Realtime", [ "ngResource", "ngRoute",
 // type : "line",
 // thickness : "1px"
 // }, ],
-// axes : {
+// axes : {npm install -g g
 // x : {
 // type : "linear",
 // key : "x"
@@ -94,11 +94,8 @@ app
 				"MainCtrl",
 				function($scope, RTServices, $interval, $filter, $modal) {
 					$scope.mostrar = false;
-<<<<<<< HEAD
 					$scope.Today = new Date();
 					$scope.FirstDay = new Date(2015, 1, 1);
-=======
->>>>>>> origin/master
 					$scope.ExpandCollapse = function() {
 						if ($scope.mostrar) {
 							$scope.mostrar = false;
@@ -107,6 +104,7 @@ app
 						}
 					};
 					$scope.validarImagen = function(key) {
+						
 						var descripcion = key;
 						if (descripcion.contains('AIRE')) {
 							alert("Continene aire");
@@ -201,7 +199,7 @@ app
 						animationEasing : 'easeOutBounce',
 						animateRotate : true,
 						animateScale : false,
-						legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+						legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%> <%=segments[i].percentage.toFixed(2) %> % <%}%></li><%}%></ul>'
 					};
 
 					$scope.options = {
@@ -242,17 +240,13 @@ app
 					$scope.getColor = function(row) {
 						if (row.tagvalue < row.umbral01)
 							return 'red';
-						if (row.tagvalue > row.umbral01
-								&& row.tagvalue < row.umbral02)
+						if (row.tagvalue >= row.umbral01 && row.tagvalue < row.umbral02)
 							return 'yellow';
-						if (row.tagvalue > row.umbral02
-								&& row.tagvalue < row.umbral03)
+						if (row.tagvalue >= row.umbral02 && row.tagvalue < row.umbral03)
 							return 'green';
-						if (row.tagvalue > row.umbral03
-								&& row.tagvalue < row.umbral04)
+						if (row.tagvalue >= row.umbral03 && row.tagvalue < row.umbral04)
 							return 'yellow';
-						if (row.tagvalue > row.umbral04
-								&& row.tagvalue < row.umbral05)
+						if (row.tagvalue >= row.umbral04 && row.tagvalue < row.umbral05)
 							return 'red';
 						return 'purple';
 					};
@@ -386,7 +380,8 @@ app
 																						"nombreequipo");
 																	});
 												}, 5000);
-									});
+									})
+									;
 				});
 
 app.directive('gauge', function() {
