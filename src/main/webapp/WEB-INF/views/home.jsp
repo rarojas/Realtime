@@ -70,6 +70,9 @@
 	float: left;
 	margin-right: 10px;
 }
+tc-chartjs-doughnut{
+	float:left;
+}
 
 .tc-chart-js-legend {
 	list-style-type: none;
@@ -101,7 +104,7 @@
 							<td align="center" height="10px"><span><font
 									color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span> <span><font
 									color="#69BE28" size="5">|</font></span> <span><font
-									color="#69BE28" size="5">{{sitio.clasificacionsitio}}</font></span></td>
+									color="#69BE28" chart-data="demandas" auto-legend></canvas>ize="5">{{sitio.clasificacionsitio}}</font></span></td>
 						</tr>
 						<tr>
 							<td height="10px" align="center">
@@ -306,8 +309,7 @@
 			</td>
 			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
-					<canvas tc-chartjs-doughnut chart-options="optionsDemandas" style="float: left"
-						chart-data="demandas" auto-legend></canvas>
+					<canvas tc-chartjs-doughnut chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
 				</div>
 			</td>
 		</tr>
