@@ -70,7 +70,7 @@
 	float: left;
 	margin-right: 10px;
 }
-tc-chartjs-doughnut{
+.tc-chartjs-doughnut{
 	float:left;
 }
 
@@ -78,7 +78,7 @@ tc-chartjs-doughnut{
 	list-style-type: none;
 	padding-left: 0px;
 	text-align: left;
-	float: right;
+	float: left;
 }
 
 .circle {
@@ -103,8 +103,10 @@ tc-chartjs-doughnut{
 						<tr style="">
 							<td align="center" height="10px"><span><font
 									color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span> <span><font
-									color="#69BE28" size="5">|</font></span> <span><font
-									color="#69BE28" chart-data="demandas" auto-legend></canvas>ize="5">{{sitio.clasificacionsitio}}</font></span></td>
+									color="#69BE28" size="5">|</font></span>									
+									 <span><font color="#69BE28" size="5">|</font></span>									
+									 <span><font  size="5">{{sitio.clasificacionsitio}}</font>
+									</span></td>
 						</tr>
 						<tr>
 							<td height="10px" align="center">
@@ -290,18 +292,18 @@ tc-chartjs-doughnut{
 					</tr>
 					<tr>
 						<td class="col-md-3 text-center">
-							<h1>Consumo del Sitio</h1>
+							<h2>Consumo del Sitio</h2>
 						</td>
 					</tr>
 					<tr>
 						<td class="col-md-3 text-center">
-							<h1>{{ConsumoSitio | number : 2 }} kWhr</h1>
+							<h2>{{ConsumoSitio | number : 2 }} kWhr</h2>
 						</td>
 					</tr>
 					<tr>
 						<td class="col-md-3 text-center">
-							<h1>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today
-								| date :'dd/MM/yyyy' }}</h1>
+							<h2>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today
+								| date :'dd/MM/yyyy' }}</h2>
 						</td>
 					</tr>
 

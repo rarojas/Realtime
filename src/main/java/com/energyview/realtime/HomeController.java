@@ -107,7 +107,7 @@ public class HomeController {
 	@ResponseBody
 	public List<Variable> SitioEquipos(@PathVariable String idsitio) {
 		List<Variable> variables = informix.query(
-				"Select * from ext_cognos where idsitio = ? and flagtr = 't'",
+				"Select * from ext_cognos where idsitio = ? and flagtr = 't' order by  variable desc,componente",
 				new Object[] { idsitio }, new VariableMapper());
 		return variables;
 	}
@@ -129,7 +129,7 @@ public class HomeController {
 	@RequestMapping(value = "/sitio/consumolast12/{nombresitio}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Consumo> ConsumoSitioLast12(@PathVariable String nombresitio) {		
-		String sql = String.format("SELECT  hora,SUM(valor) as consumo FROM 5minutales where  tipoequipo = 'ACOMETIDA'" 
+		String sql = String.format("SELECT hora,SUM(valor) as consumo FROM 5minutales where  tipoequipo = 'ACOMETIDA'" 
 					+" and variable = 'CONSUMO' and sitio = ? AND tagtimestamp >  "
 					+ "SUBDATE(NOW(), INTERVAL 12 HOUR) group by sitio,hora",nombresitio);
 		List<Consumo> consumos = mysql.query(sql,new Object[] { nombresitio }, new  ConsumosMapper());		
