@@ -37,7 +37,7 @@ var app = angular.module("Realtime", [ "ngResource", "ngRoute",
 // mode : "scrubber"
 // },
 // drawLegend : true,
-// drawDots : true,
+// drawDots : true,48/ibmcognos/cgi-bin/cognos.cgi
 // columnsHGap : 5
 // }
 // },
@@ -208,18 +208,21 @@ app
 							label : "Consumos",
 							color : "#ff0000",
 							type : "column",
+							unit:'kWHr',
 							thickness : "1px"
 						} ],
 						axes : {
 							x : {
 								type : "linear",
 								key : 'hora',
+								unit:'kWHr',
 								labelFunction : function(value) {
 									return (value - 6) + ':00';
 								}
 							},
 							y : {
-								type : "linear"
+								type : "linear",
+								unit:'kWHr'
 							}
 						},
 						lineMode : "cardinal",

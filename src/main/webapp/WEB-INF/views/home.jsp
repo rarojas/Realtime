@@ -91,13 +91,12 @@
 </style>
 </head>
 <body ng-controller="MainCtrl">
-	<table border="0" style="width: 100%; background-color: #445465;">
+	<table style="width:100%; background-color: #445465;border-collapse: collapse;border: 0px;border-color: transparent;">
 		<tr style="width: 100%;">
-			<td width="400px" align="center"><img alt="" width="200px;"
-				src="resources/img/logos/LogoSelmec.jpg"></td>
+			<td width="400px" align="center"><img alt="" width="150px;" src="resources/img/logos/LogoSelmec.jpg"></td>
 			<td width="500px" align="center">
 				<div>
-					<table border="0" style="width: 80%; background-color: #445465;">
+					<table border="0" style="width:80%;background-color: #445465;">
 						<tr>
 							<td height="10px"></td>
 						</tr>
@@ -119,14 +118,13 @@
 				</div>
 			</td>
 			<td></td>
-			<td width="" align="right"><img alt=""
+			<td width="" align="right"><img alt="" height="63px"
 				ng-src="resources/img/logos/{{sitio.idcliente}}.png"
-				ng-show="sitio !== undefined"></td>
-			<td width="15px;"></td>
+				ng-show="sitio !== undefined"></td>			
 		</tr>
 	</table>
 	<table class="tabla" border="0" style="width: 100%">
-		<tr style="width: 100%;">
+		<tr style="width:100%;">
 			<td align="center" colspan="4"
 				style="border-top: solid #FFFFFF; border-bottom: solid #FFFFFF;">
 				<div style="width: 97%;" align="left">
@@ -247,19 +245,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-6 text-right" ng-hide="form.idsitio === undefined">
-			<div class="row">
-				<div class="col-md-12">
-					<h4>Consumo del Sitio {{ConsumoSitio | number : 2 }} kWhr</h4>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<h4>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today |
-						date :'dd/MM/yyyy' }}</h4>
-				</div>
-			</div>
-		</div>
+		<div class="col-md-6 text-right"></div>
 	</div>
 	<table class="row" style="width: 100%">
 		<tr align="center">
@@ -279,8 +265,7 @@
 					<tr>
 						<td class="col-md-3 text-center">
 							<div>
-								<linechart data="consumos" options="options" width="500"
-									height="300"></linechart>
+								<linechart data="consumos" options="options" width="500" height="300"></linechart>
 							</div>
 						</td>
 					</tr>
@@ -292,21 +277,26 @@
 				</table>
 			</td>
 			<td width="200px" align="center">
-				<table style="width: 100%">
-					<tr>
-						<td class="col-md-3 text-center" align="center">
-							<canvas class="gauge" id="demanda" canvasid="demanda"
-								value="demanda" max="40" min="0" unit="kWhr" title=""
-								width="200%">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<canvas class="gauge" id="demanda" canvasid="demanda" value="demanda" max="50" min="0" unit="kW" title="" width="200%">
 				                </canvas>
-						</td>
-					</tr>
-				</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Consumo del Sitio {{ConsumoSitio | number : 2 }} kWhr</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today | date :'dd/MM/yyyy' }}</h3>
+					</div>
+				</div>
 			</td>
 			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
-					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut
-						chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
+					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
 				</div>
 			</td>
 		</tr>
@@ -335,7 +325,7 @@
 								width="50px" ng-show="key.indexOf('ACOMETIDA') == 0"> <img
 								alt=""
 								src="resources/img/icons/Equipos/AireAcondicionado_icon.png"
-								width="50px" ng-show="key.indexOf('AIRE') == 0"> <img
+								width="50px" ng-show="key.indexOf('AIRE') == 0 || key.indexOf('MINI') == 0 || key.indexOf('CUARTO') == 0"> <img
 								alt=""
 								src="resources/img/icons/Equipos/BancoDeBaterias_icon.png"
 								width="50px" ng-show="key.indexOf('BANCO BATERIA') == 0">
@@ -348,6 +338,18 @@
 								alt=""
 								src="resources/img/icons/Equipos/energiaElectrica_icon.png"
 								width="50px" ng-show="key.indexOf('ILUMINACION') == 0">
+								<img
+								alt=""
+								src="resources/img/icons/Equipos/UPS_icon.png"
+								width="50px" ng-show="key.indexOf('UPS') == 0">
+								<img
+								alt=""
+								src="resources/img/icons/Equipos/PlantaDeEmergencia_icon.png"
+								width="50px" ng-show="key.indexOf('PLANTA DE EMERGENCIA') == 0">
+								<img
+								alt=""
+								src="resources/img/icons/Equipos/Router_icon.png"
+								width="50px" ng-show="key.indexOf('ROUTER') == 0">
 							</td>
 							<td class="campo-tabla-equipos" colspan="5">{{key}}</td>
 						</tr>
