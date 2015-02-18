@@ -70,8 +70,9 @@
 	float: left;
 	margin-right: 10px;
 }
-.tc-chartjs-doughnut{
-	float:left;
+
+.tc-chartjs-doughnut {
+	float: left;
 }
 
 .tc-chart-js-legend {
@@ -102,9 +103,9 @@
 						</tr>
 						<tr style="">
 							<td align="center" height="10px"><span><font
-									color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span>
-									 <span><font color="#69BE28" size="5">|</font></span>																		 									
-									 <span><font  color="#69BE28" size="5">{{sitio.clasificacionsitio}}</font></span></td>
+									color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span> <span><font
+									color="#69BE28" size="5">|</font></span> <span><font
+									color="#69BE28" size="5">{{sitio.clasificacionsitio}}</font></span></td>
 						</tr>
 						<tr>
 							<td height="10px" align="center">
@@ -124,7 +125,6 @@
 			<td width="15px;"></td>
 		</tr>
 	</table>
-	<br>
 	<table class="tabla" border="0" style="width: 100%">
 		<tr style="width: 100%;">
 			<td align="center" colspan="4"
@@ -144,8 +144,7 @@
 			<td colspan="4" height="8px"></td>
 		</tr>
 	</table>
-	<table ng-show="mostrar === true" class="tabla" border="0"
-		style="width: 100%;">
+	<table ng-show="mostrar === true" class="tabla" style="width: 100%;">
 		<tr>
 			<td width="400px" align="center">
 				<table class="tabla" border="0" style="width: 350px;">
@@ -199,7 +198,6 @@
 			<td width="80px"></td>
 			<td width="" align="center">
 				<table class="tabla">
-					
 					<tr height="37px">
 						<td align="center"><img alt=""
 							src="resources/img/icons/00-ICONOS-FINALES-E2color-4_08.png">
@@ -213,43 +211,58 @@
 			</td>
 		</tr>
 	</table>
-	<br>
-	<div style="width: 1024px;">
-		<div class="col-md-12">
-			<form class="form-horizontal">
-				<fieldset>
-					<legend>Tablero en Tiempo Real</legend>
-					<table style="width: 650px; background-color: transparent;">
-						<tr style="width: 100%">
-							<td width="10px"></td>
-							<td width="100px" align="right"><label
-								class="col-md-4 control-label">Cliente</label></td>
-							<td width="500px"><select
-								ng-options="c.idcliente as c.cliente for c in Clientes"
-								class="form-control" ng-model="form.idcliente" name="cliente"></select>
-							</td>
-							<td width=""></td>
-						</tr>
-						<tr height="10px">
-						</tr>
-						<tr>
-							<td width="10px"></td>
-							<td align="right"><label class="col-md-4 control-label">Sitio</label>
-							</td>
-							<td><select ng-options="c.idsitio as c.nombresitio for c in Sitios"
-								class="form-control" ng-disable="form.idcliente == null"
-								ng-model="form.idsitio" name="sitios"></select></td>
-							<td></td>
-						</tr>
-					</table>
-				</fieldset>
-			</form>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-12">
+					<form class="form-horizontal">
+						<fieldset>
+							<legend>Tablero en Tiempo Real</legend>
+							<table style="width: 650px; background-color: transparent;">
+								<tr style="width: 100%">
+									<td width="10px"></td>
+									<td width="100px" align="right"><label
+										class="col-md-4 control-label">Cliente</label></td>
+									<td width="500px"><select
+										ng-options="c.idcliente as c.cliente for c in Clientes"
+										class="form-control" ng-model="form.idcliente" name="cliente"></select>
+									</td>
+									<td width=""></td>
+								</tr>
+								<tr height="10px">
+								</tr>
+								<tr>
+									<td width="10px"></td>
+									<td align="right"><label class="col-md-4 control-label">Sitio</label>
+									</td>
+									<td><select
+										ng-options="c.idsitio as c.nombresitio for c in Sitios"
+										class="form-control" ng-disable="form.idcliente == null"
+										ng-model="form.idsitio" name="sitios"></select></td>
+									<td></td>
+								</tr>
+							</table>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 text-right" ng-hide="form.idsitio === undefined">
+			<div class="row">
+				<div class="col-md-12">
+					<h4>Consumo del Sitio {{ConsumoSitio | number : 2 }} kWhr</h4>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h4>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today |
+						date :'dd/MM/yyyy' }}</h4>
+				</div>
+			</div>
 		</div>
 	</div>
-	<br>
-	<!-- <div class="container-fluid"> -->
-	<table class="row" border="0" style="width: 103%;">
-		<tr align="center">	
+	<table class="row" style="width: 100%">
+		<tr align="center">
 			<td>
 				<h2>Consumo de las últimas 12 horas</h2>
 			</td>
@@ -260,7 +273,7 @@
 				<h2>Distribución de demandas</h2>
 			</td>
 		</tr>
-		<tr align="center">			
+		<tr align="center">
 			<td width="400px">
 				<table style="width: 100%">
 					<tr>
@@ -283,33 +296,17 @@
 					<tr>
 						<td class="col-md-3 text-center" align="center">
 							<canvas class="gauge" id="demanda" canvasid="demanda"
-								 value="demanda" max="40" min="0"
-								unit="kWhr" title="" width="200%">
+								value="demanda" max="40" min="0" unit="kWhr" title=""
+								width="200%">
 				                </canvas>
 						</td>
 					</tr>
-					<tr>
-						<td class="col-md-3 text-center">
-							<h2>Consumo del Sitio</h2>
-						</td>
-					</tr>
-					<tr>
-						<td class="col-md-3 text-center">
-							<h2>{{ConsumoSitio | number : 2 }} kWhr</h2>
-						</td>
-					</tr>
-					<tr>
-						<td class="col-md-3 text-center">
-							<h2>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today
-								| date :'dd/MM/yyyy' }}</h2>
-						</td>
-					</tr>
-
 				</table>
 			</td>
 			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
-					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
+					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut
+						chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
 				</div>
 			</td>
 		</tr>
@@ -330,7 +327,7 @@
 				<!-- display: inline-block;   -->
 				<!-- 		<div ng-include="'/realtime/resources/templates/directives/'+ key.trim().replace(' ','') +'.html'"></div> -->
 				<table class="table table-condensed table-striped" border="0"
-					style="border-bottom: 10px; width: 300px; vertical-align: top; text-align: left; display: inline; margin: 20px; border-spacing: 20px;">
+					style="border-botto<!-- </div> -->m: 10px; width: 300px; vertical-align: top; text-align: left; display: inline; margin: 20px; border-spacing: 20px;">
 					<thead>
 						<tr>
 							<td colspan="1" class="campo-tabla-equipos" align="center">
@@ -347,9 +344,9 @@
 								width="50px"
 								ng-show="key.indexOf('CONDICIONES AMBIENTALES') == 0"> <img
 								alt="" src="resources/img/icons/Equipos/PlantaDeCD_icon.png"
-								width="50px" ng-show="key.indexOf('PLANTA DE CD') == 0">
-								 <img
-								alt="" src="resources/img/icons/Equipos/energiaElectrica_icon.png"
+								width="50px" ng-show="key.indexOf('PLANTA DE CD') == 0"> <img
+								alt=""
+								src="resources/img/icons/Equipos/energiaElectrica_icon.png"
 								width="50px" ng-show="key.indexOf('ILUMINACION') == 0">
 							</td>
 							<td class="campo-tabla-equipos" colspan="5">{{key}}</td>
@@ -374,12 +371,13 @@
 						</td>
 						<td align="right" width="50px">{{v.tagvalue | number :2 }}</td>
 						<td align="right" width="50px">{{ UnidadMedida(v.variable) }}</td>
-						<td align="right" width="50px" ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff |number:2}}</td>
+						<td align="right" width="50px"
+							ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff
+							|number:2}}</td>
 					</tr>
 				</table>
 			</div>
 		</div>
 	</div>
-	<!-- </div> -->
 </body>
 </html>
