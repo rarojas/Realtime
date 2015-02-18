@@ -102,11 +102,9 @@
 						</tr>
 						<tr style="">
 							<td align="center" height="10px"><span><font
-									color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span> <span><font
-									color="#69BE28" size="5">|</font></span>									
-									 <span><font color="#69BE28" size="5">|</font></span>									
-									 <span><font  size="5">{{sitio.clasificacionsitio}}</font>
-									</span></td>
+									color="#FFFFFF" size="5">{{sitio.nombresitio}}</font></span>
+									 <span><font color="#69BE28" size="5">|</font></span>																		 									
+									 <span><font  color="#69BE28" size="5">{{sitio.clasificacionsitio}}</font></span></td>
 						</tr>
 						<tr>
 							<td height="10px" align="center">
@@ -311,7 +309,7 @@
 			</td>
 			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
-					<canvas tc-chartjs-doughnut chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
+					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
 				</div>
 			</td>
 		</tr>
@@ -375,10 +373,8 @@
 							<div class="circle" ng-style="{'background-color': getColor(v)}"></div>
 						</td>
 						<td align="right" width="50px">{{v.tagvalue | number :2 }}</td>
-						<td align="right" width="50px">{{ UnidadMedida(v.unidadmedicion) }}</td>
-						<td align="right" width="50px"
-							ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff |
-							number:2}}</td>
+						<td align="right" width="50px">{{ UnidadMedida(v.variable) }}</td>
+						<td align="right" width="50px" ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff |number:2}}</td>
 					</tr>
 				</table>
 			</div>
