@@ -1,70 +1,6 @@
 var app = angular.module("Realtime", [ "ngResource", "ngRoute",
 		'n3-line-chart', 'tc.chartjs', 'angular-loading-bar', 'ui.bootstrap',
 		"AngularGM" ]);
-
-// app.directive(
-// 'myTooltip',
-// function($tooltip) {
-// return {
-// restrict : 'EA',
-// scope : {
-// data : "=",
-// label : "@",
-// },
-// controller : function($scope) {
-// console.log($scope.data);
-// $scope.show = false;
-// $scope.options = {
-// series : [ {
-// y : "tagvalue",
-// label : $scope.label,
-// color : "#ff0000",
-// type : "line",
-// thickness : "1px"
-// }, ],
-// axes : {npm install -g g
-// x : {
-// type : "linear",
-// key : "x"
-// },
-// y : {
-// type : "linear"
-// },
-// },
-// lineMode : "bundle",
-// tension : 0.7,
-// tooltip : {
-// mode : "scrubber"
-// },
-// drawLegend : true,
-// drawDots : true,48/ibmcognos/cgi-bin/cognos.cgi
-// columnsHGap : 5
-// }
-// },
-// link : function(scope, elem) {
-// var tooltip = $tooltip({
-// target : elem,
-// scope : scope,
-// template : '<div><h1>Last Minute</h1><linechart data="data" options="options"
-// width="500" height="300"></linechart></div>'
-// });
-// elem.on("click", function() {
-// if (scope.show)
-// scope.show = false;
-// else
-// scope.show = true;
-// });
-// scope.$watch('show', function(value) {
-// if (value) {
-// tooltip.open();
-// } else {
-// tooltip.close();
-// }
-// })
-// }
-// };
-// });
-
 app.factory("RTServices", function($resource) {
 	var api = {};
 	api.Equipos = $resource("/realtime/Equipos", {}, {});
@@ -94,8 +30,6 @@ app
 				"MainCtrl",
 				function($scope, RTServices, $interval, $filter, $modal) {
 					$scope.mostrar = false;
-					$scope.Today = new Date();
-					$scope.FirstDay = new Date(2015, 1, 1);
 					$scope.ExpandCollapse = function() {
 						if ($scope.mostrar) {
 							$scope.mostrar = false;
@@ -213,12 +147,9 @@ app
 						} ],
 						axes : {
 							x : {
-								type : "linear",
+								type : "date",
 								key : 'hora',
-								unit:'kWHr',
-								labelFunction : function(value) {
-									return (value - 6) + ':00';
-								}
+								unit:'kWHr'
 							},
 							y : {
 								type : "linear",
@@ -230,7 +161,7 @@ app
 						tooltip : {
 							mode : "scrubber"
 						},
-						drawLegend : true,
+						drawLegend : true,							
 						drawDots : true,
 						columnsHGap : 5
 					};
@@ -322,13 +253,12 @@ app
 														function(response) {
 															$scope.DatosGenerales = response[0];
 														});
-										RTServices.Sitios
-												.ConsumoSitio(
+										RTServices.Sitios.ConsumoSitio(
 														{
 															sitio : $scope.sitio.nombresitio
 														},
 														function(response) {
-															$scope.ConsumoSitio = response.consumo;
+															$scope.ConsumoSitio = response;
 														});
 										RTServices.Sitios.ConsumoSitioLast12({
 											sitio : $scope.sitio.nombresitio

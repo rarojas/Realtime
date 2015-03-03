@@ -265,7 +265,7 @@
 					<tr>
 						<td class="col-md-3 text-center">
 							<div>
-								<linechart data="consumos" options="options" width="500" height="300"></linechart>
+								<linechart data="consumos" options="options" ></linechart>
 							</div>
 						</td>
 					</tr>
@@ -285,12 +285,12 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Consumo del Sitio {{ConsumoSitio | number : 2 }} kWhr</h3>
+						<h3>Consumo del Sitio {{ConsumoSitio.consumo | number : 2 }} kWhr</h3>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Del periodo {{FirstDay | date :'dd/MM/yyyy'}} a {{ Today | date :'dd/MM/yyyy' }}</h3>
+						<h3>Del periodo {{ConsumoSitio.inicio | date :'dd/MM/yyyy'}} a {{ ConsumoSitio.now | date :'dd/MM/yyyy' }}</h3>
 					</div>
 				</div>
 			</td>
@@ -362,7 +362,7 @@
 							<td colspan="1" class="campo-tabla-equipos"></td>
 						</tr>
 					</thead>
-					<tr ng-repeat="v in data | orderBy : componente">
+					<tr ng-repeat="v in data ">
 						<td width="90px">{{v.componente}}</td>
 						<td width="90px"><a my-tooltip ng-click="click()"
 							data="v.lastMinute" label="{{v.variable}}" href>
@@ -373,9 +373,7 @@
 						</td>
 						<td align="right" width="50px">{{v.tagvalue | number :2 }}</td>
 						<td align="right" width="50px">{{ UnidadMedida(v.variable) }}</td>
-						<td align="right" width="50px"
-							ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff
-							|number:2}}</td>
+						<td align="right" width="50px" ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff | number:2}}</td>
 					</tr>
 				</table>
 			</div>

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import mappers.ClienteMapper;
+import mappers.ConsumoMonthMapper;
 import mappers.ConsumosMapper;
 import mappers.DatosGeneralesMapper;
 import mappers.EquipoMapper;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.energyview.realtime.model.Cliente;
 import com.energyview.realtime.model.Consumo;
+import com.energyview.realtime.model.ConsumoMonth;
 import com.energyview.realtime.model.Equipo;
 import com.energyview.realtime.model.Sitio;
 import com.energyview.realtime.model.Variable;
@@ -39,8 +41,7 @@ import com.energyview.realtime.model.Variable;
 @Controller
 public class HomeController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	@Qualifier("jdbctemplate")
@@ -114,25 +115,33 @@ public class HomeController {
 
 	@RequestMapping(value = "/sitio/consumo/{nombresitio}", method = RequestMethod.GET)
 	@ResponseBody
-	public Consumo ConsumoSitio(@PathVariable String nombresitio) {
+	public ConsumoMonth ConsumoSitio(@PathVariable String nombresitio) {
 		Date d = new Date();
-		Consumo consumo = new Consumo();
+		ConsumoMonth consumo = new ConsumoMonth();
 		@SuppressWarnings("deprecation")
 		String sql = String
-				.format("SELECT SUM(valor) FROM 5minutales where  tipoequipo = 'ACOMETIDA'  "
+				.format("SELECT SUM(valor) as consumo, NOW() AS now,CAST(CONCAT(ANO,'-', MES,'-1') AS DATE) AS inicio  FROM 5minutales where  tipoequipo = 'ACOMETIDA'  "
 						+ "and variable = 'CONSUMO' and sitio = '%s' and mes = %d and ano =  %d group by sitio",
 						nombresitio, d.getMonth() + 1, d.getYear() + 1900);
-		consumo.consumo = mysql.queryForObject(sql, Double.class);
+	 consumo = mysql.queryForObject(sql, new ConsumoMonthMapper());		
 		return consumo;
 	}
+	
+	@RequestMapping(value = "/sitio/demandas/{nombresitio}", method = RequestMethod.GET)
+	@ResponseBody
+	public Consumo Demandas(@PathVariable String nombresitio) {		
+		Consumo consumo = new Consumo();
+		String sql = String.format("");
+		consumo.consumo = informix.queryForObject(sql, Double.class);
+		return consumo;
+	}
+	
 	
 	@RequestMapping(value = "/sitio/consumolast12/{nombresitio}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Consumo> ConsumoSitioLast12(@PathVariable String nombresitio) {		
-		String sql = String.format("SELECT hora,SUM(valor) as consumo FROM 5minutales where  tipoequipo = 'ACOMETIDA'" 
-					+" and variable = 'CONSUMO' and sitio = ? AND tagtimestamp >  "
-					+ "SUBDATE(NOW(), INTERVAL 12 HOUR) group by sitio,hora",nombresitio);
-		List<Consumo> consumos = mysql.query(sql,new Object[] { nombresitio }, new  ConsumosMapper());		
+		String sql = String.format("SELECT SUM(valor) as consumo,SUBDATE(cast((CONCAT(ANO,'-',MES,'-',DIA,' ',HORA,':00:00')) AS DATETIME), INTERVAL 6 HOUR) as 'hora' FROM 5minutales where  tipoequipo = 'ACOMETIDA' and variable = 'CONSUMO' and sitio = '%s' AND tagtimestamp >  SUBDATE(NOW(), INTERVAL 12 HOUR) group by sitio,hora order by 2",nombresitio);
+		List<Consumo> consumos = mysql.query(sql, new  ConsumosMapper());		
 		return consumos;
 	}
 	
