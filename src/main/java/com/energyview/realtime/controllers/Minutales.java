@@ -26,7 +26,7 @@ import com.energyview.realtime.model.dto.Minutal;
 public class Minutales {
 
 	@Autowired
-	@Qualifier("jdbctemplateMySQL")
+	@Qualifier("jdbctemplateVertica")
 	JdbcTemplate vertica;
 
 	@RequestMapping("Minutales")

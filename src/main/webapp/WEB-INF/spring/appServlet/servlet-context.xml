@@ -15,15 +15,27 @@
 		p:location="/WEB-INF/jdbc.properties">
 	</beans:bean>
 
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" 		
-		p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-		p:username="${jdbc.username}" p:password="${jdbc.password}">
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}">
+	</beans:bean>
+
+	<beans:bean id="dataSourceVertica"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${jdbcvertica.driverClassName}" p:url="${jdbcvertica.url}"
+		p:username="${jdbcvertica.username}" p:password="${jdbcvertica.password}">
 	</beans:bean>
 
 	<beans:bean id="dataSourceMySQL"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource" 		
-		p:driverClassName="${jdbcvertica.driverClassName}" p:url="${jdbcvertica.url}"
-		p:username="${jdbcvertica.username}" p:password="${jdbcvertica.password}">
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${jdbcMysql.driverClassName}" p:url="${jdbcMysql.url}"
+		p:username="${jdbcMysql.username}" p:password="${jdbcMysql.password}">
+	</beans:bean>
+
+	<beans:bean id="jdbctemplateVertica" class="org.springframework.jdbc.core.JdbcTemplate">
+		<beans:constructor-arg>
+			<beans:ref bean="dataSourceVertica" />
+		</beans:constructor-arg>
 	</beans:bean>
 
 	<beans:bean id="jdbctemplateMySQL" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -42,7 +54,7 @@
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 		<beans:qualifier value="transactionManagerInformix"></beans:qualifier>
 	</beans:bean>
-	
+
 	<beans:bean id="transactionManagerMySQL"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSourceMySQL"></beans:property>

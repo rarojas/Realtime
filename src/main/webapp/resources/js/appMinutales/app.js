@@ -24,16 +24,14 @@ app.controller("MainCtrl", function($scope, Services) {
 	$scope.variables = Services.Minutales.Variables();
 	$scope.getData = function() {
 		var data = [];
-		$scope.minutales = Services.Minutales.Minutales({
+		Services.Minutales.Minutales({
 			sitio : $scope.sitio,
 			variable : $scope.variable,
 			inicio : new Date($scope.inicio),
 			fin : new Date($scope.fin)
 		}, function(response) {
 			angular.forEach(response, function(item) {
-				data
-						.push([ item.tagtimestamp, item.value, item.max,
-								item.min ]);
+				data.push([ item.tagtimestamp, item.value, item.max,item.min ]);
 			});
 			$('#container').highcharts('StockChart', {
 				chart : {
