@@ -139,7 +139,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>vertica jdbc driver maven
+			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
 
