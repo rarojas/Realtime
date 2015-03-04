@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="ConsumoByMonth">
+    <![CDATA[
+    	SELECT c.cliente,s.sitio,r.consumo,r.fp,ano,mes FROM usrenergyview01.resumen r
+		INNER JOIN sitios s on s.id = r.idsitio 
+		INNER JOIN cliente c on c.id = r.idcliente
+		WHERE ano = ?  and mes = ?      
+    ]]>
+</entry>    
+<entry key="FPByMonth">
+    <![CDATA[
+    	SELECT s.sitio,avg(avg) as consumo FROM  usrenergyview01.dias d
+		INNER JOIN sitios s on s.id = d.idsitio 
+	    where idvariable = 6 and ano = ? and mes = ? 
+		group by 1 order by 1
+		]]>
+</entry>
+</properties>

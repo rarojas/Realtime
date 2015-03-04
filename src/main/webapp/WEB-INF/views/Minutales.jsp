@@ -11,7 +11,6 @@
 	rel="stylesheet" />
 <link href="<c:url value="/resources/js/tether/css/tether.css" />"
 	rel="stylesheet" />
-
 <link href="<c:url value="/resources/js/sbadmin/css/sb-admin-2.css" />"
 	rel="stylesheet" />
 <link

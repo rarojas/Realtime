@@ -31,7 +31,7 @@ app.controller("MainCtrl", function($scope, Services) {
 			fin : new Date($scope.fin)
 		}, function(response) {
 			angular.forEach(response, function(item) {
-				data.push([ item.tagtimestamp, item.value, item.max,item.min ]);
+				data.push([item.tagtimestamp, item.value, item.max,item.min]);
 			});
 			$('#container').highcharts('StockChart', {
 				chart : {
@@ -53,46 +53,15 @@ app.controller("MainCtrl", function($scope, Services) {
 					text : ''
 				},
 				xAxis : {
-					type : 'datetime',
-					events : {},
+					type : 'datetime',					
 				},
-				yAxis : {
-					floor : 0
+				yAxis : {					
 				},
 				series : [ {
 					name : 'Variable',
-					data : data,
-					dataGrouping : {
-						enabled : false
-					}
-				} ]
+					data : data
+					} ]
 			});
 		});
 	};
-	$scope.options = {
-		series : [ {
-			y : "value",
-			label : "Variables",
-			color : "#ff0000",
-			thickness : "1px"
-		} ],
-		axes : {
-			x : {
-				type : 'date',
-				key : 'tagtimestamp'
-			},
-			y : {
-				type : "linear"
-			}
-		},
-		lineMode : "cardinal",
-		tension : 0.7,
-		tooltip : {
-			mode : "scrubber"
-		},
-		drawLegend : true,
-		drawDots : true,
-		columnsHGap : 5
-	};
-
 });
