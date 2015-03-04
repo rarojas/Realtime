@@ -1,4 +1,4 @@
-var app = angular.module("Minutales", [ "ngResource", "ngRoute",
+var app = angular.module("Minutales", [ "ngResource", "ngRoute",'blockUI',
 		"n3-line-chart" ]);
 app.factory("Services", function($resource) {
 	var api = {};
