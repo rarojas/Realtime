@@ -15,6 +15,16 @@
 	</properties>
 	<repositories>
 		<repository>
+			<id>com.springsource.repository.bundles.release</id>
+			<name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/release</url>
+		</repository>
+		<repository>
+			<id>com.springsource.repository.bundles.external</id>
+			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
+			<url>http://repository.springsource.com/maven/bundles/external</url>
+		</repository>
+		<repository>
 			<id>webjars</id>
 			<url>http://webjars.github.com/m2</url>
 		</repository>
@@ -68,7 +78,7 @@
 			<version>1.9.10</version>
 		</dependency>
 		<!-- JS Webjar -->
-		
+
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>angularjs</artifactId>

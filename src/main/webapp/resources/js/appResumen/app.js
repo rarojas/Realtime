@@ -18,10 +18,8 @@ app.factory("ResumenServices", function($resource) {
 app.controller("MainCtrl", function($scope, ResumenServices, $filter) {
 	$scope.GetData = function() {
 		$scope.consumos = ResumenServices.Resumen.ConsumoByMonth($scope.form);
-		
 	};
-	$scope.years = [
-		{
+	$scope.years = [{
 			text : '2015',
 			value : 2015
 		}
