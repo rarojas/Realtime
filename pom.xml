@@ -23,11 +23,7 @@
 			<id>com.springsource.repository.bundles.external</id>
 			<name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
 			<url>http://repository.springsource.com/maven/bundles/external</url>
-		</repository>
-		<repository>
-			<id>webjars</id>
-			<url>http://webjars.github.com/m2</url>
-		</repository>
+		</repository>		
 	</repositories>
 	<dependencies>
 		<!-- Spring -->
