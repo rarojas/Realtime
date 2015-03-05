@@ -183,9 +183,10 @@ app
 						columnsHGap : 5
 					};
 					$scope.$watch("form.idcliente", function(newValue, oldValue) {
-						$scope.Sitios = RTServices.Sitios.query({
+						RTServices.Sitios.query({
 							idcliente : newValue
-						}, function() {
+						}, function(response) {
+							$scope.Sitios = response;
 							if ($scope.params.idsitio) {
 								$scope.form.idsitio = $scope.params.idsitio;
 							}
