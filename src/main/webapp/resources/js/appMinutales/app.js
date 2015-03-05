@@ -32,7 +32,7 @@ app.controller("MainCtrl", function($scope, Services) {
 		}, function(response) {
 			angular.forEach(response, function(item) {
 				data.push([item.tagtimestamp, item.value, item.max,item.min]);
-			});
+			});					
 			$('#container').highcharts('StockChart', {
 				chart : {
 					zoomType : 'x'

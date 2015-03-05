@@ -91,12 +91,14 @@
 </style>
 </head>
 <body ng-controller="MainCtrl">
-	<table style="width:100%; background-color: #445465;border-collapse: collapse;border: 0px;border-color: transparent;">
+	<table
+		style="width: 100%; background-color: #445465; border-collapse: collapse; border: 0px; border-color: transparent;">
 		<tr style="width: 100%;">
-			<td width="400px" align="center"><img alt="" width="150px;" src="resources/img/logos/LogoSelmec.jpg"></td>
+			<td width="400px" align="center"><img alt="" width="150px;"
+				src="resources/img/logos/LogoSelmec.jpg"></td>
 			<td width="500px" align="center">
 				<div>
-					<table border="0" style="width:80%;background-color: #445465;">
+					<table border="0" style="width: 80%; background-color: #445465;">
 						<tr>
 							<td height="10px"></td>
 						</tr>
@@ -120,11 +122,11 @@
 			<td></td>
 			<td width="" align="right"><img alt="" height="63px"
 				ng-src="resources/img/logos/{{sitio.idcliente}}.png"
-				ng-show="sitio !== undefined"></td>			
+				ng-show="sitio !== undefined"></td>
 		</tr>
 	</table>
 	<table class="tabla" border="0" style="width: 100%">
-		<tr style="width:100%;">
+		<tr style="width: 100%;">
 			<td align="center" colspan="4"
 				style="border-top: solid #FFFFFF; border-bottom: solid #FFFFFF;">
 				<div style="width: 97%;" align="left">
@@ -265,7 +267,7 @@
 					<tr>
 						<td class="col-md-3 text-center">
 							<div>
-								<linechart data="consumos" options="options" ></linechart>
+								<linechart data="consumos" options="options"></linechart>
 							</div>
 						</td>
 					</tr>
@@ -279,24 +281,28 @@
 			<td width="200px" align="center">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<canvas class="gauge" id="demanda" canvasid="demanda" value="demanda" max="50" min="0" unit="kW" title="" width="200%">
+						<canvas class="gauge" id="demanda" canvasid="demanda"
+							value="demanda" max="50" min="0" unit="kW" title="" width="200%">
 				                </canvas>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Consumo del Sitio {{ConsumoSitio.consumo | number : 2 }} kWhr</h3>
+						<h3>Consumo del Sitio {{ConsumoSitio.consumo | number : 2 }}
+							kWhr</h3>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<h3>Del periodo {{ConsumoSitio.inicio | date :'dd/MM/yyyy'}} a {{ ConsumoSitio.now | date :'dd/MM/yyyy' }}</h3>
+						<h3>Del periodo {{ConsumoSitio.inicio | date :'dd/MM/yyyy'}}
+							a {{ ConsumoSitio.now | date :'dd/MM/yyyy' }}</h3>
 					</div>
 				</div>
 			</td>
 			<td width="400px">
 				<div class="col-md-3" style="width: 100%">
-					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
+					<canvas class="tc-chartjs-doughnut" tc-chartjs-doughnut
+						chart-options="optionsDemandas" chart-data="demandas" auto-legend></canvas>
 				</div>
 			</td>
 		</tr>
@@ -325,8 +331,9 @@
 								width="50px" ng-show="key.indexOf('ACOMETIDA') == 0"> <img
 								alt=""
 								src="resources/img/icons/Equipos/AireAcondicionado_icon.png"
-								width="50px" ng-show="key.indexOf('AIRE') == 0 || key.indexOf('MINI') == 0 || key.indexOf('CUARTO') == 0"> <img
-								alt=""
+								width="50px"
+								ng-show="key.indexOf('AIRE') == 0 || key.indexOf('MINI') == 0 || key.indexOf('CUARTO') == 0">
+								<img alt=""
 								src="resources/img/icons/Equipos/BancoDeBaterias_icon.png"
 								width="50px" ng-show="key.indexOf('BANCO BATERIA') == 0">
 								<img alt=""
@@ -337,18 +344,13 @@
 								width="50px" ng-show="key.indexOf('PLANTA DE CD') == 0"> <img
 								alt=""
 								src="resources/img/icons/Equipos/energiaElectrica_icon.png"
-								width="50px" ng-show="key.indexOf('ILUMINACION') == 0">
-								<img
-								alt=""
-								src="resources/img/icons/Equipos/UPS_icon.png"
-								width="50px" ng-show="key.indexOf('UPS') == 0">
-								<img
+								width="50px" ng-show="key.indexOf('ILUMINACION') == 0"> <img
+								alt="" src="resources/img/icons/Equipos/UPS_icon.png"
+								width="50px" ng-show="key.indexOf('UPS') == 0"> <img
 								alt=""
 								src="resources/img/icons/Equipos/PlantaDeEmergencia_icon.png"
 								width="50px" ng-show="key.indexOf('PLANTA DE EMERGENCIA') == 0">
-								<img
-								alt=""
-								src="resources/img/icons/Equipos/Router_icon.png"
+								<img alt="" src="resources/img/icons/Equipos/Router_icon.png"
 								width="50px" ng-show="key.indexOf('ROUTER') == 0">
 							</td>
 							<td class="campo-tabla-equipos" colspan="5">{{key}}</td>
@@ -373,7 +375,9 @@
 						</td>
 						<td align="right" width="50px">{{v.tagvalue | number :2 }}</td>
 						<td align="right" width="50px">{{ UnidadMedida(v.variable) }}</td>
-						<td align="right" width="50px" ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff | number:2}}</td>
+						<td align="right" width="50px"
+							ng-style="{color: v.diff < 0 ? 'red':'green'}">{{v.diff |
+							number:2}}</td>
 					</tr>
 				</table>
 			</div>
