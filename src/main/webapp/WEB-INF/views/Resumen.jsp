@@ -55,8 +55,8 @@
 				<tbody>
 					<tr ng-repeat="c in consumos">
 						<td><label>{{c.sitio}}</label></td>
-						<td>{{c.consumo | number : 2}} KWHR</td>
-						<td><span ng-style="{color: c.fp < 0.9 ? 'red':'green' }">{{c.fp}}</span></td>
+						<td class="text-right">{{c.consumo | number : 2}} KWHR</td>
+						<td class="text-right"><span ng-style="{color: c.fp < 0.9 ? 'red':'green' }">{{c.fp | number : 2}}</span></td>
 					</tr>
 				</tbody>
 			</table>
