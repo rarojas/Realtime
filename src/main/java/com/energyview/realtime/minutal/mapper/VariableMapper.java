@@ -14,7 +14,7 @@ public class VariableMapper implements RowMapper<Variable> {
 		Variable variable = new Variable();
 		variable.id = arg0.getInt("id");
 		variable.componente = arg0.getString("componente");
-		variable.variable = arg0.getString("variable");
+		variable.variable = arg0.getString("componente") +"-" +  arg0.getString("variable");
 		return variable;
 	}
 

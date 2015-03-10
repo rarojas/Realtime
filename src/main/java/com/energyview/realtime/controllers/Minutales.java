@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.energyview.realtime.model.dto.Equipo;
 import com.energyview.realtime.model.dto.GetMinutal;
 import com.energyview.realtime.model.dto.Sitio;
 import com.energyview.realtime.model.dto.Variable;
+import com.energyview.realtime.minutal.mapper.EquiposMapper;
 import com.energyview.realtime.minutal.mapper.SitioMapper;
 import com.energyview.realtime.minutal.mapper.VariableMapper;
 import com.energyview.realtime.model.dto.Minutal;
@@ -41,10 +43,10 @@ public class Minutales {
 		sqlParams.addValue("fin", minutal.fin, Types.DATE);
 		sqlParams.addValue("variable", minutal.variable, Types.INTEGER);
 		sqlParams.addValue("sitio", minutal.sitio, Types.INTEGER);
-		String sql = "SELECT * FROM minutales m INNER JOIN variables v on v.id = m.idvariable WHERE idsitio = ? AND idvariable = ? AND tagtimestamp between ? and ? AND idequipo = 500005  order by tagtimestamp";
+		String sql = "SELECT * FROM minutales m INNER JOIN variables v on v.id = m.idvariable WHERE idsitio = ? AND idvariable = ? AND tagtimestamp between ? and ? AND idequipo = ?  order by tagtimestamp";
 		List<Minutal> minutales = vertica.query(sql, new Object[] {
-				minutal.sitio, minutal.variable, minutal.inicio, minutal.fin },
-				new MinutalMapper());
+				minutal.sitio, minutal.variable, minutal.inicio, minutal.fin,
+				minutal.equipo }, new MinutalMapper());
 		return minutales;
 	}
 
@@ -62,5 +64,13 @@ public class Minutales {
 		String sql = "SELECT * FROM variables";
 		List<Variable> sitios = vertica.query(sql, new VariableMapper());
 		return sitios;
+	}
+
+	@RequestMapping("api/Minutal/equipos")
+	@ResponseBody
+	public List<Equipo> GetEquipos() {
+		String sql = "SELECT * FROM equipos";
+		List<Equipo> equipos = vertica.query(sql, new EquiposMapper());
+		return equipos;
 	}
 }
