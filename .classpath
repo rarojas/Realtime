@@ -25,6 +25,10 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="/home/ricardo/Descargas/vertica-jdbc-7.1.1-0.jar"/>
+=======
+	<classpathentry kind="lib" path="src/main/lib/vertica-jdbc-7.1.1-0.jar"/>
+>>>>>>> RealtimeV2-master
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

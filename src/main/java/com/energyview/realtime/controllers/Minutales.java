@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.energyview.realtime.model.dto.Equipo;
 import com.energyview.realtime.model.dto.GetMinutal;
 import com.energyview.realtime.model.dto.Sitio;
@@ -43,6 +44,7 @@ public class Minutales {
 		sqlParams.addValue("fin", minutal.fin, Types.DATE);
 		sqlParams.addValue("variable", minutal.variable, Types.INTEGER);
 		sqlParams.addValue("sitio", minutal.sitio, Types.INTEGER);
+
 		String sql = "SELECT * FROM minutales m INNER JOIN variables v on v.id = m.idvariable WHERE idsitio = ? AND idvariable = ? AND tagtimestamp between ? and ? AND idequipo = ?  order by tagtimestamp";
 		List<Minutal> minutales = vertica.query(sql, new Object[] {
 				minutal.sitio, minutal.variable, minutal.inicio, minutal.fin,

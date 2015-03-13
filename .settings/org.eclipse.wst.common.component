@@ -5,6 +5,12 @@
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+<<<<<<< HEAD
+=======
+        <dependent-module archiveName="vertica-jdbc-7.1.1-0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/Realtime/src/main/lib/vertica-jdbc-7.1.1-0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+>>>>>>> RealtimeV2-master
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="realtime"/>
 	</wb-module>

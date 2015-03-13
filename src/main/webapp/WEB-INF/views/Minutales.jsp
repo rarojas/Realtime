@@ -8,16 +8,13 @@
 	<jsp:attribute name="app">Minutales</jsp:attribute>
 	<jsp:attribute name="header">
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script
-			src="<c:url value="/resources/js/twitter-bootstrap/js/bootstrap.min.js" />"></script>
+	<script src="<c:url value="/resources/js/twitter-bootstrap/js/bootstrap.min.js" />"></script>
 	<script src="<c:url value="/resources/js/sbadmin/js/sb-admin-2.js" />"></script>
-	<script
-			src="<c:url value="/resources/js/angular-loading-bar/loading-bar.min.js" />"></script>
+	<script src="<c:url value="/resources/js/angular-loading-bar/loading-bar.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/angularjs/angular-route.min.js" />"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.4.0/lodash.min.js" charset="utf-8"></script>	
-	<script
-			src="<c:url value="/resources/js/n3-charts/line-chart.min.js" />"></script>
+	<script src="<c:url value="/resources/js/n3-charts/line-chart.min.js" />"></script>
 	<script src="<c:url value="/resources/js/appMinutales/app.js" />"></script>
 	<script src="http://code.highcharts.com/stock/highstock.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>	
@@ -42,6 +39,7 @@
 										<option value="">Sitios...</option>
 									</select>
 								</div>
+
 <!-- 								<div class="form-group"> -->
 <!-- 									<label>Variables</label> <select class="form-control" -->
 <!-- 								name="variable" ng-model="variable" -->

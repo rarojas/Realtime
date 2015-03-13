@@ -7,8 +7,10 @@ import org.codehaus.jackson.map.ser.std.DateSerializer;
 
 public class GetMinutal {
 	public int sitio;
-
+<<<<<<< HEAD
 	public int equipo;
+=======
+>>>>>>> RealtimeV2-master
 	public int variable;
 	@JsonSerialize(using = DateSerializer.class)
 	public Date inicio;

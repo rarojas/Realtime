@@ -227,7 +227,11 @@ app
 					$scope.ViewMap = function() {
 						var modalInstance = $modal.open({
 							size : 'lg',
+<<<<<<< HEAD
+							templateUrl : 'resources/templates/directives/ViewMap.html',
+=======
 							templateUrl : '/realtime/resources/templates/directives/ViewMap.html',
+>>>>>>> RealtimeV2-master
 							resolve : {
 								center : function() {
 									return [
