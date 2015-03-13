@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Build-Jdk: 1.7.0_65
 Built-By: ricardo
-=======
-Build-Jdk: 1.7.0_75
-Built-By: Usuario
->>>>>>> RealtimeV2-master
 Created-By: Maven Integration for Eclipse
 
