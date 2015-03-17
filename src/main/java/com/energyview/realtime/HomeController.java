@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 
 import mappers.ClienteMapper;
 import mappers.ConsumoMonthMapper;
@@ -41,7 +42,8 @@ import com.energyview.realtime.model.Variable;
 @Controller
 public class HomeController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(HomeController.class);
 
 	@Autowired
 	@Qualifier("jdbctemplate")
@@ -50,6 +52,13 @@ public class HomeController {
 	@Autowired
 	@Qualifier("jdbctemplateMySQL")
 	JdbcTemplate mysql;
+
+	@Autowired
+	@Qualifier("jdbctemplateVertica")
+	JdbcTemplate vertica;
+
+	@Autowired
+	Properties queryProps;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -107,52 +116,53 @@ public class HomeController {
 	@RequestMapping(value = "/sitios/Equipos/{idsitio}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Variable> SitioEquipos(@PathVariable String idsitio) {
-		List<Variable> variables = informix.query(
-				"Select * from ext_cognos where idsitio = ? and flagtr = 't' order by  componente, variable desc",
-				new Object[] { idsitio }, new VariableMapper());
+		List<Variable> variables = informix
+				.query("Select * from ext_cognos where idsitio = ? and flagtr = 't' order by  componente, variable desc",
+						new Object[] { idsitio }, new VariableMapper());
 		return variables;
 	}
 
+	@SuppressWarnings("deprecation")
 	@RequestMapping(value = "/sitio/consumo/{nombresitio}", method = RequestMethod.GET)
 	@ResponseBody
 	public ConsumoMonth ConsumoSitio(@PathVariable String nombresitio) {
 		Date d = new Date();
-		ConsumoMonth consumo = new ConsumoMonth();
-		@SuppressWarnings("deprecation")
-		String sql = String
-				.format("SELECT SUM(valor) as consumo, NOW() AS now,CAST(CONCAT(ANO,'-', MES,'-1') AS DATE) AS inicio  FROM 5minutales where  tipoequipo = 'ACOMETIDA'  "
-						+ "and variable = 'CONSUMO' and sitio = '%s' and mes = %d and ano =  %d group by sitio",
-						nombresitio, d.getMonth() + 1, d.getYear() + 1900);
-	 consumo = mysql.queryForObject(sql, new ConsumoMonthMapper());		
+		ConsumoMonth consumo = new ConsumoMonth();		
+		String sql = queryProps.getProperty("ConsumoMonth");		
+		consumo = vertica.queryForObject(sql,
+				new Object[] { nombresitio, d.getMonth() + 1,
+						d.getYear() + 1900 }, new ConsumoMonthMapper());
 		return consumo;
 	}
-	
+
 	@RequestMapping(value = "/sitio/demandas/{nombresitio}", method = RequestMethod.GET)
 	@ResponseBody
-	public Consumo Demandas(@PathVariable String nombresitio) {		
+	public Consumo Demandas(@PathVariable String nombresitio) {
 		Consumo consumo = new Consumo();
 		String sql = String.format("");
 		consumo.consumo = informix.queryForObject(sql, Double.class);
 		return consumo;
 	}
-	
-	
+
 	@RequestMapping(value = "/sitio/consumolast12/{nombresitio}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Consumo> ConsumoSitioLast12(@PathVariable String nombresitio) {		
-		String sql = String.format("SELECT SUM(valor) as consumo,SUBDATE(cast((CONCAT(ANO,'-',MES,'-',DIA,' ',HORA,':00:00')) AS DATETIME), INTERVAL 6 HOUR) as 'hora' FROM 5minutales where  tipoequipo = 'ACOMETIDA' and variable = 'CONSUMO' and sitio = '%s' AND tagtimestamp >  SUBDATE(NOW(), INTERVAL 12 HOUR) group by sitio,hora order by 2",nombresitio);
-		List<Consumo> consumos = mysql.query(sql, new  ConsumosMapper());		
+	public List<Consumo> ConsumoSitioLast12(@PathVariable String nombresitio) {
+		String sql = queryProps.getProperty("ConsumoLast12hours");
+		List<Consumo> consumos = vertica.query(sql,
+				new Object[] { nombresitio }, new ConsumosMapper());
 		return consumos;
 	}
-	
+
 	@RequestMapping(value = "/sitio/DatosGenerales/{idsitio}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<com.energyview.realtime.model.DatosGenerales> DatosGenerales(@PathVariable String idsitio) {		
-		String sql = String.format("select LIMIT 1 cliente,zonaregion,nombresitio,iprouter, nombrecontacto,telefono,puesto,correo,gpslongitud,gpslatitud "
-				+ " from ext_cognos where idsitio = '%s';",idsitio);
-		List<com.energyview.realtime.model.DatosGenerales> datos = informix.query(sql, new  DatosGeneralesMapper());		
+	public List<com.energyview.realtime.model.DatosGenerales> DatosGenerales(
+			@PathVariable String idsitio) {
+		String sql = String
+				.format("select LIMIT 1 cliente,zonaregion,nombresitio,iprouter, nombrecontacto,telefono,puesto,correo,gpslongitud,gpslatitud "
+						+ " from ext_cognos where idsitio = '%s';", idsitio);
+		List<com.energyview.realtime.model.DatosGenerales> datos = informix
+				.query(sql, new DatosGeneralesMapper());
 		return datos;
 	}
 
-	
 }

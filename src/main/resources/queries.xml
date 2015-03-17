@@ -17,4 +17,23 @@
 		group by 1 order by 1
 		]]>
 </entry>
+
+<entry key="ConsumoLast12hours">
+    <![CDATA[
+    	SELECT tagtimestamp as hora,SUM(h.avg) as consumo from horas h 
+    	INNER JOIN sitios s on s.id = h.idsitio where idvariable = 2 
+    	AND tagtimestamp >  timestampadd('hh',-12,NOW()) and s.idsitio = ?
+    	group by 1 order by 1 
+		]]>
+</entry>
+
+<entry key="ConsumoMonth">
+    <![CDATA[
+    	SELECT now() as now, concat(concat(concat('01/',mes::varchar(2)),'/'),ano)::timestamp as inicio,
+    	SUM(h.avg) as consumo from horas h
+		INNER JOIN sitios s on s.id = h.idsitio
+		where idvariable = 2  and s.idsitio = ? AND mes = ? and ano = ?
+		group by s.id,ano,mes 
+		]]>
+</entry>
 </properties>

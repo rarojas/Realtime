@@ -272,12 +272,12 @@ app
 											$scope.DatosGenerales = response[0];
 										});
 										RTServices.Sitios.ConsumoSitio({
-											sitio : $scope.sitio.nombresitio
+											sitio : $scope.sitio.idsitio
 										}, function(response) {
 											$scope.ConsumoSitio = response;
 										});
 										RTServices.Sitios.ConsumoSitioLast12({
-											sitio : $scope.sitio.nombresitio
+											sitio : $scope.sitio.idsitio
 										}, function(response) {
 											$scope.consumos = response;
 										});

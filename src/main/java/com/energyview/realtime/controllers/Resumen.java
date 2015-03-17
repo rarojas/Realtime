@@ -28,8 +28,7 @@ public class Resumen {
 	@RequestMapping("Resumen")
 	public ModelAndView resumen() {
 		ModelAndView modelAndView = new ModelAndView();
-		String sql = queryProps.getProperty("ConsumoByMonth");
-//		modelAndView.addObject("resumen", vertica.query(sql, new Object[] { 2015, 2 }, new ConsumoByMonthMapper()));
+		//		modelAndView.addObject("resumen", vertica.query(sql, new Object[] { 2015, 2 }, new ConsumoByMonthMapper()));
 		return modelAndView;
 	}
 
