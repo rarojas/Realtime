@@ -18,7 +18,8 @@
 	<script src="<c:url value="/resources/js/appMinutales/app.js" />"></script>
 	<script src="http://code.highcharts.com/stock/highstock.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>	
-	<script src="<c:url value="/resources/js/angularjs-dropdown/angularjs-dropdown-multiselect.min.js" />"></script>
+<!--<script src="<c:url value="/resources/js/angularjs-dropdown/angularjs-dropdown-multiselect.min.js" />"></script>-->
+	<script src="https://rawgit.com/dotansimha/angularjs-dropdown-multiselect/master/src/angularjs-dropdown-multiselect.js"></script>
 	<script src="<c:url value="/resources/js/appMinutales/app.js" />"></script>
 	</jsp:attribute>	
 	<jsp:body>
