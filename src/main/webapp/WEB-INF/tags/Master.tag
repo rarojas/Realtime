@@ -47,6 +47,14 @@
 <script
 	src="<c:url value="/resources/js/angularjs/angular-route.min.js" />"></script>
 <jsp:invoke fragment="header" />
+<style>
+.circle {
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	/* width and height can be anything, as long as they're equal */
+}
+</style>
 </head>
 <body ng-controller="<jsp:invoke fragment="controller"/>">
 	<div id="wrapper">

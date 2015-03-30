@@ -9,4 +9,5 @@ public class Sitio {
 	public String codigopostal;
 	public String gpslatitud;
 	public String gpslongitud;
+	public Boolean disponibilidad;
 }

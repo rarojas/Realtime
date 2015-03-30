@@ -1,9 +1,10 @@
 package com.energyview.realtime.model;
 
-import java.util.Date;
+import org.joda.time.DateTime;
+
 
 
 public class Consumo {
 	public Double consumo;		
-	public Date hora;
+	public DateTime hora;
 }
