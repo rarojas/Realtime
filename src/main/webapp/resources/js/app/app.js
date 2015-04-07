@@ -235,17 +235,22 @@ app
 									];
 								}
 							},
-							controller : function($scope, center) {
+							controller : function($scope, center,$timeout) {
 								$scope.sitios = center;
-								$scope.sitio = center[0];
+								$scope.sitio = center[0];								
 								$scope.optionsMaps = {
 									map : {
-										center : new google.maps.LatLng(center[0].lat,
-												center[0].log),
+										center : new google.maps.LatLng(center[0].lat,center[0].log),
 										zoom : 6,
 										mapTypeId : google.maps.MapTypeId.ROADMAP
 									}
 								};
+								$timeout(function(){
+										$scope.optionsMaps.map.center =  new google.maps.LatLng(center[0].lat,center[0].log - 1);										
+										$scope.$broadcast('gmMapResize', 'MapSitios');																		
+										$scope.optionsMaps.map.center =  new google.maps.LatLng(center[0].lat,center[0].log);										
+										$scope.$broadcast('gmMapResize', 'MapSitios');
+								},100);
 								$scope.triggerOpenInfoWindow = function(sitio) {
 									$scope.markerEvents = [
 											{

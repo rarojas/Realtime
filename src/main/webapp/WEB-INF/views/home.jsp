@@ -56,9 +56,10 @@
 	src="<c:url value="/resources/js/tc-angular-chartjs/tc-angular-chartjs.min.js" />"></script>
 
 <script
-	src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap-0.13.0.min.js" />"></script>
-<script
 	src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap-tpls-0.13.0.min.js" />"></script>
+<script
+	src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap-0.13.0.min.js" />"></script>
+
 
 <script src="//maps.googleapis.com/maps/api/js?sensor=false/"></script>
 <!--<script src="//dylanfprice.github.io/angular-gm/1.0.0/angular-gm.min.js"></script>-->
@@ -290,40 +291,7 @@ $(document).ready(function(){
 				</td>
 			</tr>
 		</table>
-	</div>	
-			<!--<div style="width: 100%;">
-				<div class="col-md-12">
-					<form class="form-horizontal">
-						<fieldset>
-							<legend>Tablero en Tiempo Real</legend>
-							<!--<table style="width: 650px; background-color: transparent;">
-								<tr style="width: 100%">
-									<td width="10px"></td>
-									<td width="100px" align="right"><label
-										class="col-md-4 control-label">Cliente</label></td>
-									<td width="500px"><select
-										ng-options="c.idcliente as c.cliente for c in Clientes"
-										class="form-control" ng-model="form.idcliente" name="cliente"></select>
-									</td>
-									<td width=""></td>
-								</tr>
-								<tr height="10px">
-								</tr>
-								<tr>
-									<td width="10px"></td>
-									<td align="right"><label class="col-md-4 control-label">Sitio</label>
-									</td>
-									<td><select
-										ng-options="c.idsitio as c.nombresitio for c in Sitios"
-										class="form-control" ng-disable="form.idcliente == null"
-										ng-model="form.idsitio" name="sitios"></select></td>
-									<td></td>
-								</tr>
-							</table>
-						</fieldset>
-					</form>
-				</div>-->
-				
+	</div>							
 	<br>
 		<div class="col-md-12" style="font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;">
 		<fieldset>

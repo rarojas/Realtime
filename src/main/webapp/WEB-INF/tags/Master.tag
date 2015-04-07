@@ -74,12 +74,10 @@
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-headercollapse">
 				<ul class="nav" id="side-menu">
-					<li><a href="/realtime"><i class="fa fa-tachometer "></i>
-							Resumen</a></li>
-					<li><a href="/realtime"><i class="fa fa-play "></i>
-							Realtime</a></li>
-					<li><a href="/realtime"><i class="fa fa-clock-o"></i>
-							Minutales</a></li>
+					<li><a href="/realtime/Resumen"><i class="fa fa-tachometer "></i> Resumen</a></li>
+					<li><a href="/realtime"><i class="fa fa-play "></i> Realtime</a></li>
+					<li><a href="/realtime/Minutales"><i class="fa fa-clock-o"></i> Minutales</a></li>
+					<li><a href="/realtime/Disponibilidad"><i class="fa fa-power-off"></i> Disponibidlidad</a></li>
 				</ul>
 			</div>
 		</div>
