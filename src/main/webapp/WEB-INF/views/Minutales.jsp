@@ -13,13 +13,14 @@
 	<script src="<c:url value="/resources/js/angular-loading-bar/loading-bar.min.js" />"></script>
 	<script	src="<c:url value="/resources/js/angularjs/angular-route.min.js" />"></script>
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.4.0/lodash.min.js" charset="utf-8"></script>	
+	<script src="http://cdn.rawgit.com/lodash/lodash/3.4.0/lodash.min.js" type="text/javascript" /></script>	
 	<script src="<c:url value="/resources/js/n3-charts/line-chart.min.js" />"></script>
 	<script src="<c:url value="/resources/js/appMinutales/app.js" />"></script>
 	<script src="http://code.highcharts.com/stock/highstock.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>	
-<!--<script src="<c:url value="/resources/js/angularjs-dropdown/angularjs-dropdown-multiselect.min.js" />"></script>-->
-	<script src="https://rawgit.com/dotansimha/angularjs-dropdown-multiselect/master/src/angularjs-dropdown-multiselect.js"></script>
+    <script src="http://cdn.rawgit.com/dotansimha/angularjs-dropdown-multiselect/master/dist/angularjs-dropdown-multiselect.min.js">
+    </script>
+	</script>
 	<script src="<c:url value="/resources/js/appMinutales/app.js" />"></script>
 	</jsp:attribute>	
 	<jsp:body>
