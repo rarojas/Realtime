@@ -36,4 +36,10 @@
 		group by s.id,ano,mes 
 		]]>
 </entry>
+<entry key="SuministroCaldera">
+    <![CDATA[   
+		SELECT *
+		FROM ext_cognos where idsitio = ? AND componente LIKE 'FASE%' order by 1,2
+		]]>
+</entry>
 </properties>

@@ -13,8 +13,8 @@ public class VariableMapper implements RowMapper<Variable> {
 	public Variable mapRow(ResultSet arg0, int arg1) throws SQLException {
 		Variable variable = new Variable();
 		variable.id = arg0.getInt("id");
-		variable.componente = arg0.getString("componente");
-		variable.variable = arg0.getString("componente") +"-" +  arg0.getString("variable");
+		variable.setComponente(arg0.getString("componente"));
+		variable.setVariable(arg0.getString("componente") +"-" +  arg0.getString("variable"));
 		return variable;
 	}
 

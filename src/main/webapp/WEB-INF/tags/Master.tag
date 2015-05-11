@@ -39,6 +39,8 @@
 <link
 	href="<c:url value="/resources/js/angular-blockui/angular-block-ui.min.css" />"
 	rel="stylesheet" />
+<script src="<c:url value="/resources/js/jquery/jquery-2.1.3.min.js" />"></script>	
+	
 <script src="<c:url value="/resources/js/angularjs/angular.min.js" />"></script>
 <script
 	src="<c:url value="/resources/js/angular-blockui/angular-block-ui.min.js" />"></script>
@@ -46,6 +48,12 @@
 	src="<c:url value="/resources/js/angularjs/angular-resource.min.js" />"></script>
 <script
 	src="<c:url value="/resources/js/angularjs/angular-route.min.js" />"></script>
+<script
+	src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap.min.js" />"></script>
+	<script src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap-tpls.min.js" />"></script>
+<script src="//maps.googleapis.com/maps/api/js?sensor=false/"></script>
+<!--<script src="//dylanfprice.github.io/angular-gm/1.0.0/angular-gm.min.js"></script>-->
+<script src="<c:url value="/resources/js/angularjs/angular-gm.min.js"/>"></script>
 <jsp:invoke fragment="header" />
 <style>
 .circle {
@@ -67,17 +75,21 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			> <a class="navbar-brand" href="index.html">Energy View</a>
+			<a class="navbar-brand" href="index.html">Energy View</a>
 		</div>
 		<ul class="nav navbar-top-links navbar-right">
 		</ul>
 		<div class="navbar-default sidebar" role="navigation">
 			<div class="sidebar-nav navbar-headercollapse">
 				<ul class="nav" id="side-menu">
-					<li><a href="/realtime/Resumen"><i class="fa fa-tachometer "></i> Resumen</a></li>
-					<li><a href="/realtime"><i class="fa fa-play "></i> Realtime</a></li>
-					<li><a href="/realtime/Minutales"><i class="fa fa-clock-o"></i> Minutales</a></li>
-					<li><a href="/realtime/Disponibilidad"><i class="fa fa-power-off"></i> Disponibidlidad</a></li>
+					<li><a href="/realtime/Resumen"><i
+							class="fa fa-tachometer "></i> Resumen</a></li>
+					<li><a href="/realtime"><i class="fa fa-play "></i>
+							Realtime</a></li>
+					<li><a href="/realtime/Minutales"><i class="fa fa-clock-o"></i>
+							Minutales</a></li>
+					<li><a href="/realtime/Disponibilidad"><i
+							class="fa fa-power-off"></i> Disponibidlidad</a></li>
 				</ul>
 			</div>
 		</div>

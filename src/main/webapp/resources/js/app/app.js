@@ -46,7 +46,7 @@ app
 						}
 					};
 					$scope.validarImagen = function(key) {
-						var descripcion = key;
+						var descripcion = key;modbus
 						if (descripcion.contains('AIRE')) {
 							alert("Continene aire");
 							return false;

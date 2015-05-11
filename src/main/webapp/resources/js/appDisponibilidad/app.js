@@ -19,7 +19,7 @@ app.controller("MainCtrl", function($scope, DServices, $interval) {
 		  $scope.$broadcast('gmMarkersUpdate', 'sitios');
 		});
 	};
-	$scope.getData();
+	$scope.getData();	
 	$scope.timer = $interval(
 			function() {
 				$scope.getData();
