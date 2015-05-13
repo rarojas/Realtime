@@ -1,29 +1,50 @@
 <div>
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table">
-				<thead>
-					<tr>
-						<th colspan="5"><label> Sumnistro de Energia </label></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td></td>
-						<td colspan="2">(V)</td>
-						<td colspan="2">(I)</td>
-					</tr>
-					<tr ng-repeat="fase in suministro.fases">
-						<td>FASE {{$index + 1}}</td>
-						<td>{{fase['voltaje'].tagvalue}}</td>
-						<td><div semaforo variable="fase['voltaje']"></div></td>
-						<td>{{fase['corriente'].tagvalue}}</td>
-						<td>
-							<div semaforo variable="fase['corriente']"></div>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+			<div class="panel panel-default">
+				<div class="panel-heading">Sumnistro de Energia</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td></td>
+							<td colspan="2">(V)</td>
+							<td colspan="2">(I)</td>
+						</tr>
+						<tr ng-repeat="fase in suministro.fases">
+							<td>FASE {{$index + 1}}</td>
+							<td>{{fase['voltaje'].tagvalue}}</td>
+							<td><div semaforo variable="fase['voltaje']"></div></td>
+							<td>{{fase['corriente'].tagvalue}}</td>
+							<td>
+								<div semaforo variable="fase['corriente']"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Temperaturas</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>Chimenea</td>
+							<td class="text-right">{{data.chimenea | number :2 }} °C</td>
+						</tr>
+						<tr>
+							<td>Agua</td>
+							<td class="text-right">{{data.agua | number :2}} °C</td>
+						</tr>
+						<tr>
+							<td>Vapor</td>
+							<td class="text-right">{{data.vapor | number :2 }} °C</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

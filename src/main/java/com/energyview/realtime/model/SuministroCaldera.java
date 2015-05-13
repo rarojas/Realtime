@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SuministroCaldera {
 	
-	public List<Fase> fases = new ArrayList<>();
+	public List<Fase> fases = new ArrayList<Fase>();
 	
 	public Double fp;
 	

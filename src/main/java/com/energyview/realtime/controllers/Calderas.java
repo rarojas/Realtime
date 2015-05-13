@@ -21,7 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.energyview.realtime.model.Fase;
 import com.energyview.realtime.model.SuministroCaldera;
 import com.energyview.realtime.model.Variable;
+import com.energyview.realtime.model.dto.CalderaValues;
+import com.energyview.realtime.model.dto.FallaCB;
 import com.energyview.realtime.model.dto.Minutal;
+import com.energyview.realtime.model.dto.Secuencia;
+import com.energyview.realtime.services.IRandomGenerator;
 
 @Controller
 public class Calderas {
@@ -34,9 +38,11 @@ public class Calderas {
 	@Qualifier("jdbctemplateVertica")
 	JdbcTemplate vertica;
 
-	
 	@Autowired
 	Properties queryProps;
+
+	@Autowired
+	IRandomGenerator randomize;
 
 	@RequestMapping(value = "Calderas")
 	public void home() {
@@ -44,13 +50,13 @@ public class Calderas {
 
 	@RequestMapping(value = "/api/calderas/demanda/{idsitio}")
 	@ResponseBody
-	public List<Minutal> DemnadaElectrica(@PathVariable("idsitio") String idsitio) {		
-		String sql = "SELECT  *  FROM MINUTALES m INNER JOIN variables v on v.id = m.idvariable WHERE IDEQUIPO = 500005 AND m.IDVARIABLE = 5 AND tagtimestamp >  timestampadd('hh',-12,NOW()) AND idsitio = 1000011  order by tagtimestamp";
-		List<Minutal> minutales = vertica.query(sql, new MinutalMapper());
+	public List<Minutal> DemnadaElectrica(
+			@PathVariable("idsitio") int idsitio) {
+		String sql = "SELECT  *  FROM MINUTALES m INNER JOIN variables v on v.id = m.idvariable WHERE IDEQUIPO = 500005 AND IDSITIO = ? AND m.IDVARIABLE = 5 AND tagtimestamp >  timestampadd('hh',-12,NOW())  order by tagtimestamp";
+		List<Minutal> minutales = vertica.query(sql,new Object[]{ idsitio}, new MinutalMapper());
 		return minutales;
 	}
-	
-	
+
 	@RequestMapping(value = "/api/calderas/suministro/{idsitio}")
 	@ResponseBody
 	public SuministroCaldera Suministro(@PathVariable("idsitio") String idsitio) {
@@ -79,7 +85,45 @@ public class Calderas {
 				}
 			}
 			suministro.fases.add(fase);
+			suministro.fp = randomize.Generate(0.9, 10d);
 		}
 		return suministro;
+	}
+
+	@RequestMapping(value = "/api/calderas/values")
+	@ResponseBody
+	public CalderaValues Values(){		com.energyview.realtime.model.dto.
+		CalderaValues values  = new CalderaValues();
+		values.setModulacion(randomize.Generate(80d, 10d));
+		values.setEficiencia(randomize.Generate(80d, 10d));
+		values.setOxigeno(randomize.Generate(80d, 10d));
+		values.setDemanda(randomize.Generate(30d, 10d));
+		values.setAgua(randomize.Generate(90d, 10d));
+		values.setChimenea(randomize.Generate(90d, 10d));
+		values.setHoras(1502d);
+		values.setCiclos(18000d);
+		values.setFlama(100d);
+		values.setPurga(5.1);
+		values.setPostpurga(10.3);
+				
+		return values;
+	}
+	
+	
+	@RequestMapping(value = "/api/calderas/fallas")
+	@ResponseBody
+	public FallaCB fallas(){
+		FallaCB fallas = new FallaCB();
+		fallas.setFalla1("NO FALLAS");
+		fallas.setFalla2("NO FALLAS");
+		return  fallas;
+	}
+	
+	
+	@RequestMapping(value = "/api/calderas/secuencia")
+	@ResponseBody
+	public Secuencia secuencia(){
+		Secuencia secuencia = new Secuencia();		
+		return  secuencia;
 	}
 }

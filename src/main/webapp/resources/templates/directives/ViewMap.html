@@ -1,10 +1,14 @@
 <div class="modal-header">
+	<button type="button" class="close" ng-click="close()"
+		aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	</button>
 	<h3 class="modal-title">Ubicaci&oacute;n del Sitio
 		{{sitio.nombresitio}}</h3>
 </div>
 <style>
-.map {		
-	height:500px;
+.map {
+	height: 500px;
 }
 </style>
 <div class="modal-body">

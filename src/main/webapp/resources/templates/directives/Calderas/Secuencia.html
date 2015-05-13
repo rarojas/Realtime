@@ -1,49 +1,60 @@
 <div>
-<!-- 	<div class="panel panel-default"> -->
-<!-- 		<div class="panel-heading"> -->
-<!-- 			<i class="fa fa-power-off fa-fw"></i>Secuencia de Encendido -->
-<!-- 		</div> -->
-<!-- 		<!-- /.panel-heading --> 
-<!-- 		<div class="panel-body"> -->
-<!-- 			<div class="list-group"> -->
-<!-- 				<a href="#" class="list-group-item"> T6: OPERTOR CONTROLL INPUT	ON <span class="circle" -->
-<!-- 					style="background-color: red; display: inline-block"></span> -->
-<!-- 				</a> <a href="#" class="list-group-item"> T7: INTERLOCK INPUT ON <span -->
-<!-- 					class="circle" style="background-color: red; display: inline-block"></span> -->
-<!-- 				</a> <a href="#" class="list-group-item"> T8: PILOT VALVE OUTPUT ON<span class="circle" -->
-<!-- 					style="background-color: red; display: inline-block"></span> -->
-<!-- 				</a>  -->
-<!-- 				<a href="#" class="list-group-item"> T9: MAIN VALVE OUTPUT ON					<span class="circle" -->
-<!-- 					style="background-color: red; display: inline-block"></span> -->
-<!-- 				</a> -->
-<!-- 			</div> -->
-<!-- 			<!-- /.list-group --> 
-<!-- 		</div> -->
-<!-- 		<!-- /.panel-body -->
-<!-- 	</div> -->
-	<table class="table">
-		<thead>
-			<tr>
-				<th colspan="2">Secuencia de Encendido</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>T6: OPERTOR CONTROLL INPUT ON</td>
-				<td><div class="circle" style="background-color: red"></div></td>
-			</tr>
-			<tr>
-				<td>T7: INTERLOCK INPUT ON</td>
-				<td><div class="circle" style="background-color: red"></div></td>
-			</tr>
-			<tr>
-				<td>T8: PILOT VALVE OUTPUT ON</td>
-				<td><div class="circle" style="background-color: red"></div></td>
-			</tr>
-			<tr>
-				<td>T9: MAIN VALVE OUTPUT ON</td>
-				<td><div class="circle" style="background-color: red"></div></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Secuencia de Encendido</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>T6: OPERTOR CONTROLL INPUT ON</td>
+							<td><div class="circle" style="background-color: red"></div></td>
+						</tr>
+						<tr>
+							<td>T7: INTERLOCK INPUT ON</td>
+							<td><div class="circle" style="background-color: red"></div></td>
+						</tr>
+						<tr>
+							<td>T8: PILOT VALVE OUTPUT ON</td>
+							<td><div class="circle" style="background-color: red"></div></td>
+						</tr>
+						<tr>
+							<td>T9: MAIN VALVE OUTPUT ON</td>
+							<td><div class="circle" style="background-color: red"></div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Datos generales</div>
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>Horas de operación</td>
+							<td class="text-right">{{data.horas | number : 0 }} </td>
+						</tr>						
+						<tr>
+							<td>Número de Ciclos</td>
+							<td class="text-right">{{data.ciclos | number : 0 }}</td>
+						</tr>						
+						<tr>
+							<td>Señal de Fuerza de Flama</td>
+							<td class="text-right">{{data.flama | number : 0 }}</td>
+						</tr>						
+						<tr>
+							<td>Tiempo de Purga</td>
+							<td class="text-right">{{data.purga | number : 0 }}</td>
+						</tr>						
+						<tr>
+							<td>Tiempo Post Purga</td>
+							<td class="text-right">{{data.postpurga | number : 0 }}</td>
+						</tr>						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>

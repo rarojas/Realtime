@@ -13,10 +13,12 @@ app.factory("CalderaService", function($resource) {
 				url : apiUrl + '/demanda/:idsitio',
 				isArray : true
 			},
+			Values : {
+				url : apiUrl + '/values'
+			},
 		})
 	};
 });
-
 
 app.directive('secuencia', function() {
 	return {
@@ -24,25 +26,25 @@ app.directive('secuencia', function() {
 		restrict : "AEC",
 		scope : {
 			id : "@"
+			,data:"="	
 		},
 		link : function(scope, element, attrs, controller) {
 		},
-		controller : function($scope, $interval, CalderaService) {			
+		controller : function($scope, $interval, CalderaService) {
 		}
 	};
 });
-
 
 app.directive('suministro', function() {
 	return {
 		templateUrl : 'resources/templates/directives/Calderas/Suministro.html',
 		restrict : "AEC",
 		scope : {
-			id : "@"
-		},
-		link : function(scope, element, attrs, controller) {
-		},
+			id : "@",
+			data:"="
+		},		
 		controller : function($scope, $interval, CalderaService) {
+			console.log($scope.data);
 			$scope.getData = function() {
 				CalderaService.Calderas.Suministro({
 					idsitio : 'UBC0000014'
@@ -234,9 +236,13 @@ app
 													];
 												}
 											},
-											controller : function($scope, center, $timeout) {
+											controller : function($scope, center, $timeout,
+													$modalInstance) {
 												$scope.sitios = center;
 												$scope.sitio = center[0];
+												$scope.close = function() {
+													$modalInstance.close();
+												}
 												$scope.optionsMaps = {
 													map : {
 														center : new google.maps.LatLng(center[0].lat,
@@ -273,7 +279,9 @@ app.directive("linegraph", function() {
 	return {
 		restrict : 'AEC',
 		scope : {
-			interval : "="
+			interval : "=",
+			idsitio : "@",
+			title : "@"
 		},
 		link : function(scope, element, attrs, controller) {
 			
@@ -282,17 +290,17 @@ app.directive("linegraph", function() {
 					zoomType : 'x'
 				},
 				title : {
-					text : 'Demanda eléctrica de la caldera de las ultimas 12 horas'
+					text : scope.title
 				},
 				subtitle : {
 					text : 'Demanda por cada hora'
 				},
 				xAxis : {
 					type : 'datetime',
-//					dateTimeLabelFormats : { // don't display the dummy year
-//						month : '%e. %b',
-//						year : '%b'
-//					},
+					// dateTimeLabelFormats : { // don't display the dummy year
+					// month : '%e. %b',
+					// year : '%b'
+					// },
 					title : {
 						text : 'Fecha'
 					}
@@ -326,7 +334,7 @@ app.directive("linegraph", function() {
 		},
 		controller : function($scope, $interval, $timeout, CalderaService) {
 			CalderaService.Calderas.Demanda({
-				idsitio : 'UBC0000004'
+				idsitio : $scope.idsitio
 			}, function(response) {
 				angular.forEach(response, function(item) {
 					$scope.chart.series[0].addPoint([
@@ -340,7 +348,7 @@ app.directive("linegraph", function() {
 	};
 });
 
-app.controller("MainCtrl", function($scope) {
+app.controller("MainCtrl", function($scope, CalderaService, $interval) {
 	$scope.data = {
 		oxigeno : 0,
 		modulacion : 0,
@@ -350,6 +358,10 @@ app.controller("MainCtrl", function($scope) {
 	$scope.center = {
 		lat : 20.673792,
 		log : -103.3354131
-	}
-
+	};
+	$interval(function() {
+		CalderaService.Calderas.Values(function(response) {
+			$scope.data = response;
+		});
+	}, 5000);
 });

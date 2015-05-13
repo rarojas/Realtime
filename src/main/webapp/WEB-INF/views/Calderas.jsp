@@ -32,71 +32,82 @@
 					<div viewlocation data="center"></div>					
 				</div>		
 			</div>
-			<div class="col-md-4">		
+			<div class="col-md-4 text-center">		
 				<img alt="" src="resources/img/icons/caldera.png"
 						class="image image-responsive" style="height: 200px">
 			</div>
 			<div class="col-md-3">
-				<div suministro></div>				
+				<div suministro data="data"></div>				
 			</div>
 			<div class="col-md-3">
-				<div secuencia></div>				
+				<div secuencia  data="data"></div>				
 			</div>
 		</div>	
 		<div class="row">	
-			<div class="col-md-3 text-center col-xs-6">
-				<div class="row ">
-					<label class="col-md-12">Oxígeno</label>
-				</div>
+			<div class="col-md-3 text-center col-xs-6">				
 				<div class="row">
-					<div class="col-md-12">
-					<canvas class="gauge" id="oxigeno" canvasid="oxigeno" width="150"
-								value="data.oxigeno" max="100" min="0" unit="%" title=""></canvas>
+					<div class="col-md-12">					
+					<div class="panel panel-default">
+						<div class="panel-heading">Oxígeno</div>
+						<canvas class="gauge" id="oxigeno" canvasid="oxigeno" width="150"
+									value="data.oxigeno" max="100" min="0" unit="%" title=""></canvas>
+						</div>
 					</div>
 				</div>			
 			</div>
-			<div class="col-md-3 col-xs-6 text-center">
-				<div class="row ">
-					<label class="col-md-12">Modulación</label>
-				</div>
-				<div class="row">			
-				<canvas class="gauge" id="modulacion" canvasid="modulacion"
-							value="data.modulacion" max="100" min="0" unit="%" title=""
-							width="150"></canvas>
+			<div class="col-md-3  col-xs-6 text-center">
+					<div class="row">
+					<div class="col-md-12">					
+						<div class="panel panel-default">
+							<div class="panel-heading">Modulación</div>								
+								<canvas class="gauge" id="modulacion" canvasid="modulacion"
+									value="data.modulacion" max="100" min="0" unit="%" title=""
+									width="150"></canvas>
+								</div>Modulación
+						</div>
 				</div>			
 			</div>
 			<div class="col-md-3 col-xs-6 text-center">
-				<div class="row ">
-					<label class="col-md-12">Eficiencia</label>
-				</div>
-				<div class="row">
-				<canvas class="gauge" id="eficiencia" canvasid="eficiencia"
-							value="data.eficiencia" max="100" min="0" unit="%" title=""
-							width="150"></canvas>
+					<div class="row">
+					<div class="col-md-12">					
+						<div class="panel panel-default">
+							<div class="panel-heading">Eficiencia</div>	
+							<canvas class="gauge" id="eficiencia" canvasid="eficiencia"
+									value="data.eficiencia" max="100" min="0" unit="%" title=""
+									width="150"></canvas>
+							</div>
+					</div>
 				</div>			
 			</div>			
-			<div class="col-md-3 text-center col-xs-6">
-				<div class="row ">
-					<label class="col-md-12">Demanda</label>
-				</div>
-				<div class="row">
-				<canvas class="gauge" id="demanda" canvasid="demanda"
-							value="data.demanda" max="50" min="0" unit="KW" title=""
-							width="150"></canvas>							
+			<div class="col-md-3  text-center col-xs-6">
+					<div class="row">
+						<div class="col-md-12">					
+							<div class="panel panel-default">
+								<div class="panel-heading">Demanda</div>	
+								w<canvas class="gauge" id="demanda" canvasid="demanda"
+									value="data.demanda" max="50" min="0" unit="KW" title=""
+									width="150"></canvas>	
+						</div>
+					</div>					
 				</div>
 			</div>	
 		</div>
 		<div class="row">			
 			<div class="row">
 			<div class="col-md-6">
-				<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto" linegraph></div>
+				<div id="container"
+							style="min-width: 310px; height: 400px; margin: 0 auto" linegraph
+							idsitio="1000043"
+							title="Demanda Electrica de las Ultimas 12 horas"></div>
 			</div>
 			<div class="col-md-6">
-				<div style="min-width: 310px; height: 400px; margin: 0 auto" linegraph></div>
+				<div style="min-width: 310px; height: 400px; margin: 0 auto"
+							linegraph idsitio="1000029"
+							title="Demanda de Vapor de las ultimas 12 horas"></div>
 			</div>
 					
 			</div>
 		</div>
-	</div>	
+	</div>		
 	</jsp:body>
 </t:Master>
