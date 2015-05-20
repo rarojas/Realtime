@@ -3,8 +3,6 @@ package com.energyview.realtime.controllers;
 import java.sql.Types;
 import java.util.List;
 
-import mappers.MinutalMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.energyview.realtime.model.dto.Equipo;
 import com.energyview.realtime.model.dto.GetMinutal;
 import com.energyview.realtime.model.dto.Sitio;
 import com.energyview.realtime.model.dto.Variable;
+import com.energyview.realtime.mappers.MinutalMapper;
 import com.energyview.realtime.minutal.mapper.EquiposMapper;
 import com.energyview.realtime.minutal.mapper.SitioMapper;
 import com.energyview.realtime.minutal.mapper.VariableMapper;

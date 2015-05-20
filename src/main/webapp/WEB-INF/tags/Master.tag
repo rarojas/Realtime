@@ -39,8 +39,11 @@
 <link
 	href="<c:url value="/resources/js/angular-blockui/angular-block-ui.min.css" />"
 	rel="stylesheet" />
-<script src="<c:url value="/resources/js/jquery/jquery-2.1.3.min.js" />"></script>	
-	
+<link
+	href="<c:url value="/resources/js/angular-loading-bar/loading-bar.min" />"
+	rel="stylesheet" />
+<script src="<c:url value="/resources/js/jquery/jquery-2.1.3.min.js" />"></script>
+
 <script src="<c:url value="/resources/js/angularjs/angular.min.js" />"></script>
 <script
 	src="<c:url value="/resources/js/angular-blockui/angular-block-ui.min.js" />"></script>
@@ -50,17 +53,19 @@
 	src="<c:url value="/resources/js/angularjs/angular-route.min.js" />"></script>
 <script
 	src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap.min.js" />"></script>
-	<script src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap-tpls.min.js" />"></script>
+<script
+	src="<c:url value="/resources/js/angular-bootstrap/ui-bootstrap-tpls.min.js" />"></script>
 <script src="//maps.googleapis.com/maps/api/js?sensor=false/"></script>
 <!--<script src="//dylanfprice.github.io/angular-gm/1.0.0/angular-gm.min.js"></script>-->
 <script src="<c:url value="/resources/js/angularjs/angular-gm.min.js"/>"></script>
+<script
+	src="<c:url value="/resources/js/angular-loading-bar/loading-bar.min.js"/>"></script>
 <jsp:invoke fragment="header" />
 <style>
 .circle {
 	border-radius: 50%;
 	width: 10px;
 	height: 10px;
-	/* width and height can be anything, as long as they're equal */
 }
 </style>
 </head>
@@ -90,6 +95,12 @@
 							Minutales</a></li>
 					<li><a href="/realtime/Disponibilidad"><i
 							class="fa fa-power-off"></i> Disponibidlidad</a></li>
+					<li><a href="/realtime/Plantas"><i class="fa fa-power-off"></i>
+							Monitoreo de Plantas</a></li>
+					<li><a href="/realtime/Calderas"> <i
+							class="fa fa-power-off"></i> Monitoreo de Calderas
+					</a></li>
+
 				</ul>
 			</div>
 		</div>

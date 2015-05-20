@@ -1,0 +1,27 @@
+
+<tr >
+	<td >{{planta.equipo}}</td>
+	<td >{{planta.sitio}}</td>
+	<td class="text-right">{{(planta.data.CFEF1  )| number : 2}}</td>
+	<td class="text-right">{{(planta.data.CFEF2 )| number : 2}}</td>
+	<td class="text-right">{{(planta.data.CFEF3  )| number : 2}}</td>
+	<td class="text-right">{{(planta.data.CFEHZ )| number : 2}}</td>
+	<td class="text-right">{{(planta.data.VF1 )| number : 2}}</td>
+	<td class="text-right">{{(planta.data.VF2 )| number : 2}}</td>
+	<td class="text-right">{{(planta.data.VF3 )| number : 2}}</td>
+	<td class="text-right">{{planta.data.HZ | number : 2}}</td>
+	<td class="text-right">{{planta.data.RPM | number : 2}}</td>
+	<td class="text-right">{{planta.data.temperaturaRefigerante | number : 2}}</td>
+	<td class="text-right">{{planta.data.presionAceite | number : 2}}</td>
+	<td class="text-right">{{planta.data.voltajeBateria | number : 2}}</td>
+	<td class="text-center">
+		<div viewlocation data="planta" tooltip
+			tooltip-template="'myTooltipTemplate.html'"></div>
+	</td>
+	<td><i class="fa fa-2x fa-toggle-on" ng-show="planta.data.on"
+		style="color: green"></i> <i class="fa fa-2x fa-toggle-off"
+		ng-show="!planta.data.on"></i></td>
+	<td><a class="btn btn-primary" href="#/{{planta.idequipo}}"> <i
+			class="fa fa-fw fa-info"></i> Detalle
+	</a></td>
+</tr>

@@ -7,9 +7,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import mappers.MinutalMapper;
-import mappers.VariableMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.energyview.realtime.mappers.MinutalMapper;
+import com.energyview.realtime.mappers.VariableMapper;
 import com.energyview.realtime.model.Fase;
 import com.energyview.realtime.model.SuministroCaldera;
 import com.energyview.realtime.model.Variable;

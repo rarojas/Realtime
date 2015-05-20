@@ -1,0 +1,55 @@
+<div class="col-md-12">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<strong> Plantas</strong>
+		</div>
+		<table class="table table-striped table-condensed">
+			<thead>
+				<tr>
+					<td>Nombre</td>
+					<td>Región</td>
+					<td class="text-center" colspan="3">Voltajes CFE</td>
+					<td>CFE</td>
+					<td class="text-center" colspan="3">Voltajes Planta</td>
+					<td>Planta</td>
+					<td>RPM</td>
+					<td>Temperatura</td>
+					<td>Presión</td>
+					<td>Bateria</td>
+					<td>Locación</td>
+					<td>ON</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td class="text-center">F1 (V)</td>
+					<td class="text-center">F2 (V)</td>
+					<td class="text-center">F3 (V)</td>
+					<td class="text-center">HZ</td>
+					<td class="text-center">F1 (V)</td>
+					<td class="text-center">F2 (V)</td>
+					<td class="text-center">F3 (V)</td>
+					<td class="text-center">HZ</td>
+					<td></td>
+					<td class="text-center">(°C)</td>
+					<td class="text-center">(PSI)</td>
+					<td class="text-center">(V)</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody ng-repeat="planta in plantas">
+				<tr plantainfo planta="planta" ng-show="planta.data"></tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/ng-template" id="myTooltipTemplate.html">
+		<address>
+			{{planta.sitio.nombre}}<br>
+			{{planta.sitio.domicilio}}<br>
+			{{sitio.cp}}<br>
+		</address>
+    </script>
+</div>

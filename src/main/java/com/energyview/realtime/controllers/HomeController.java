@@ -6,14 +6,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 
-import mappers.ClienteMapper;
-import mappers.ConsumoMonthMapper;
-import mappers.ConsumosMapper;
-import mappers.DatosGeneralesMapper;
-import mappers.EquipoMapper;
-import mappers.SitioMapper;
-import mappers.VariableMapper;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.energyview.realtime.mappers.ClienteMapper;
+import com.energyview.realtime.mappers.ConsumoMonthMapper;
+import com.energyview.realtime.mappers.ConsumosMapper;
+import com.energyview.realtime.mappers.DatosGeneralesMapper;
+import com.energyview.realtime.mappers.EquipoMapper;
+import com.energyview.realtime.mappers.SitioMapper;
+import com.energyview.realtime.mappers.VariableMapper;
 import com.energyview.realtime.model.Cliente;
 import com.energyview.realtime.model.Consumo;
 import com.energyview.realtime.model.ConsumoMonth;

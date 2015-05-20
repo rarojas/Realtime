@@ -42,4 +42,10 @@
 		FROM ext_cognos where idsitio = ? AND componente LIKE 'FASE%' order by 1,2
 		]]>
 </entry>
+<entry key="PlantasMonitoreo">
+    <![CDATA[   
+		SELECT distinct  nombresitio,nombreequipo,domicilio,codigopostal,zonaregion,gpslatitud,gpslongitud,idequipo  FROM EXT_COGNOS 
+		where tipoequipo = 'PLANTA DE EMERGENCIA' 		
+		]]>
+</entry>
 </properties>

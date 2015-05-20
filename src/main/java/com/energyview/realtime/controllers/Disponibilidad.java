@@ -2,8 +2,6 @@ package com.energyview.realtime.controllers;
 
 import java.util.List;
 
-import mappers.DisponibilidadMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.energyview.realtime.mappers.DisponibilidadMapper;
 import com.energyview.realtime.model.Sitio;
 
 

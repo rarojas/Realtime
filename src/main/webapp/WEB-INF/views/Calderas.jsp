@@ -8,6 +8,7 @@
 	<jsp:attribute name="app">Calderas</jsp:attribute>
 	<jsp:attribute name="header">	
 	<script src="<c:url value="/resources/js/appCalderas/app.js" />"></script>
+	<script src="<c:url value="/resources/js/appCalderas/directives.js" />"></script>
 	<script src="http://code.highcharts.com/highcharts.js"></script>
 	<script src="http://code.highcharts.com/modules/exporting.js"></script>
 	<style>
